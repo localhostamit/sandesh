@@ -1759,7 +1759,7 @@
                 </div>
             </div>
 
-            <div class="panel">
+            <div class="panel" id="peer-id-panel">
                 <h3><i class="fa-solid fa-link"></i> Connect to Peer</h3>
                 <input type="number" id="friend-id" placeholder="Enter 4-digit Peer ID" inputmode="numeric" pattern="[0-9]*">
                 <button class="btn-connect" onclick="connectToPeer()">
@@ -2182,6 +2182,7 @@
             const isPersistent = isChatStorageEnabled();
             const modeBadge = document.getElementById('user-mode-badge');
             const contactsPanel = document.getElementById('contacts-panel');
+            const peerIdPanel = document.getElementById('peer-id-panel');
             const clearDataSection = document.getElementById('clear-data-section');
             const saveChatsToggle = document.getElementById('save-chats-toggle');
             
@@ -2191,6 +2192,8 @@
                 contactsPanel.classList.remove('hidden');
                 clearDataSection.classList.remove('hidden');
                 saveChatsToggle.checked = true;
+                // Hide peer ID panel in Save Chats mode - users connect via saved contacts
+                if (peerIdPanel) peerIdPanel.classList.add('hidden');
                 renderContacts();
             } else {
                 modeBadge.textContent = 'Guest';
@@ -2198,6 +2201,8 @@
                 contactsPanel.classList.add('hidden');
                 clearDataSection.classList.add('hidden');
                 saveChatsToggle.checked = false;
+                // Show peer ID panel in Guest/Privacy mode
+                if (peerIdPanel) peerIdPanel.classList.remove('hidden');
             }
             
             // Update username display if ui is initialized
@@ -2318,8 +2323,16 @@
             }
         });
 
-        // 2. Init PeerJS
-        const peer = new Peer(mySimpleId);
+        // 2. Init PeerJS with optimized configuration
+        const peer = new Peer(mySimpleId, {
+            debug: 0, // Disable debug logging for faster initialization
+            config: {
+                iceServers: [
+                    { urls: 'stun:stun.l.google.com:19302' },
+                    { urls: 'stun:stun1.l.google.com:19302' }
+                ]
+            }
+        });
         let conn = null;
         let call = null;
         let localStream = null;
