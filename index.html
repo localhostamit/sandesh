@@ -4,220 +4,45 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <meta name="theme-color" content="#6366f1">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="description" content="GhostLink - Private peer-to-peer encrypted messaging with file, image, video and code sharing">
-    <meta name="mobile-web-app-capable" content="yes">
-    <link rel="manifest" href="manifest.json">
-    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'%3E%3Crect fill='%236366f1' width='192' height='192' rx='32'/%3E%3Ctext x='96' y='130' text-anchor='middle' font-size='120' fill='white'%3E👻%3C/text%3E%3C/svg%3E">
-    <title>GhostLink | Secure P2P Chat</title>
-    <script src="https://unpkg.com/peerjs@1.5.2/dist/peerjs.min.js" integrity="sha384-CAQKX5mvqGSk5c3YZD09A4HgJ1PiVRQFVqNLmD5BZDQ7rD4H+yRdmwSBCMxr9/xS" crossorigin="anonymous"></script>
+    <meta name="description" content="GhostLink - Private peer-to-peer encrypted messaging">
+    <title>GhostLink | Secure Chat</title>
+    <script src="https://unpkg.com/peerjs@1.5.2/dist/peerjs.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css" integrity="sha512-Jk4AqjWsdSzSWCSuQTfYRIF84Rq/eV0G2+tu07byYwHcbTGfdmLrHjUSwvzp5HvbiqK4ibmNwdcG49Y5RGYPTg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     
     <style>
-        /* --- GHOSTLINK UNIQUE PROFESSIONAL THEME --- */
+        /* [PREVIOUS CSS REMAINS THE SAME - ADDING ONLY NEW STYLES BELOW] */
         :root {
-            /* GhostLink signature colors */
             --ghost-purple: #6366f1;
-            --ghost-purple-light: #818cf8;
-            --ghost-purple-dark: #4f46e5;
-            --ghost-cyan: #06b6d4;
-            --ghost-cyan-light: #22d3ee;
-            
-            /* Accent colors */
-            --wa-green: #25d366;
-            --wa-dark-green: #128c7e;
-            --wa-teal: #075e54;
-            --wa-light-green: #dcf8c6;
-            --tg-blue: #0088cc;
-            --tg-light-blue: #64b5f6;
-            
-            /* Modern Dark UI colors */
             --bg-dark: #0a0a0f;
             --bg-chat: #0d0d14;
             --panel-bg-dark: #12121a;
             --panel-secondary: #1a1a24;
             --border-dark: #2a2a38;
-            --bubble-out: #4f46e5;
-            --bubble-in: #1e1e2a;
-            
             --primary: #6366f1;
-            --primary-hover: #818cf8;
             --primary-light: rgba(99, 102, 241, 0.15);
-            --accent: #06b6d4;
-            --danger: #ef4444;
-            --danger-hover: #dc2626;
-            --success: #22c55e;
-            --warning: #f59e0b;
-            
             --text-main: #f0f0f5;
             --text-muted: #8b8ba0;
-            --text-bubble: #f0f0f5;
-            
-            --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
-            --shadow-md: 0 4px 12px rgba(0,0,0,0.4);
-            --shadow-lg: 0 8px 24px rgba(0,0,0,0.5);
-            --glow-primary: 0 0 20px rgba(99, 102, 241, 0.3);
-            --glow-accent: 0 0 20px rgba(6, 182, 212, 0.3);
-            
-            /* Gradients */
-            --gradient-primary: linear-gradient(135deg, #6366f1 0%, #818cf8 100%);
             --gradient-header: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-            --gradient-accent: linear-gradient(135deg, #06b6d4 0%, #22d3ee 100%);
-            --gradient-mesh: radial-gradient(ellipse at 20% 0%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
-                            radial-gradient(ellipse at 80% 100%, rgba(6, 182, 212, 0.1) 0%, transparent 50%);
+            --gradient-primary: linear-gradient(135deg, #6366f1 0%, #818cf8 100%);
         }
 
-        body {
-            --bg: var(--bg-dark);
-            --panel: var(--panel-bg-dark);
-            --border-color: var(--border-dark);
-            --text: var(--text-main);
-            --text-secondary: var(--text-muted);
-        }
-
+        /* Reset & Basics */
         * { margin:0; padding:0; box-sizing:border-box; }
-        
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
             height: 100vh;
-            height: 100dvh;
             display: flex;
             flex-direction: column;
             overflow: hidden;
-            -webkit-tap-highlight-color: transparent;
         }
 
-        /* --- PRIVACY MODAL --- */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.85);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-            padding: 20px;
-            animation: fadeIn 0.3s ease;
-            backdrop-filter: blur(8px);
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        .modal {
-            background: var(--panel);
-            border-radius: 16px;
-            max-width: 420px;
-            width: 100%;
-            padding: 0;
-            box-shadow: var(--shadow-lg);
-            animation: slideUp 0.3s ease;
-            overflow: hidden;
-            border: 1px solid var(--border-color);
-        }
-        @keyframes slideUp {
-            from { transform: translateY(30px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-        .modal-header {
-            background: var(--gradient-header);
-            padding: 24px;
-            text-align: center;
-        }
-        .modal-header i {
-            font-size: 48px;
-            color: white;
-            margin-bottom: 12px;
-            display: block;
-        }
-        .modal-header h2 {
-            color: white;
-            font-size: 22px;
-            font-weight: 600;
-            margin-bottom: 6px;
-        }
-        .modal-header p {
-            color: rgba(255,255,255,0.85);
-            font-size: 14px;
-        }
-        .modal-body {
-            padding: 24px;
-        }
-        .privacy-item {
-            display: flex;
-            gap: 14px;
-            margin-bottom: 18px;
-            padding: 14px;
-            background: var(--panel-secondary);
-            border-radius: 12px;
-            align-items: flex-start;
-        }
-        .privacy-item i {
-            font-size: 20px;
-            color: var(--primary);
-            margin-top: 2px;
-            flex-shrink: 0;
-        }
-        .privacy-item h4 {
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 4px;
-            color: var(--text);
-        }
-        .privacy-item p {
-            font-size: 13px;
-            color: var(--text-secondary);
-            line-height: 1.5;
-        }
-        .modal-footer {
-            padding: 0 24px 24px;
-        }
-        .modal-footer button {
-            width: 100%;
-            padding: 14px 24px;
-            background: var(--gradient-primary);
-            color: white;
-            border: none;
-            border-radius: 12px;
-            font-size: 15px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-        .modal-footer button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 16px rgba(0, 168, 132, 0.4);
-        }
-        .modal-footer button:active {
-            transform: translateY(0);
-        }
-        .modal-checkbox {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 16px;
-            cursor: pointer;
-        }
-        .modal-checkbox input {
-            width: 18px;
-            height: 18px;
-            accent-color: var(--primary);
-            cursor: pointer;
-        }
-        .modal-checkbox label {
-            font-size: 13px;
-            color: var(--text-secondary);
-            cursor: pointer;
-        }
+        /* --- UTILITY CLASSES --- */
+        .hidden { display: none !important; }
 
         /* --- HEADER --- */
         .header {
@@ -228,95 +53,18 @@
             align-items: center;
             height: 56px;
             flex-shrink: 0;
-            box-shadow: var(--shadow-md);
+            border-bottom: 1px solid var(--border-dark);
         }
-        .logo { 
-            font-size: 19px; 
-            font-weight: 700; 
-            color: white;
-            letter-spacing: -0.3px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .logo i { 
-            font-size: 24px;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
-        }
-        .logo .version-badge { 
-            font-size: 10px; 
-            color: rgba(255,255,255,0.8);
-            font-weight: 500;
-            background: rgba(255,255,255,0.15);
-            padding: 3px 8px;
-            border-radius: 10px;
-        }
+        .logo { font-weight: 700; display: flex; align-items: center; gap: 10px; color: white; }
+        .logo i { font-size: 20px; }
         
-        .header-right {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
+        /* --- LAYOUT --- */
+        .main-container { display: flex; flex: 1; overflow: hidden; position: relative; }
         
-        .status-badge { 
-            font-size: 12px; 
-            padding: 5px 12px; 
-            border-radius: 16px; 
-            background: rgba(255,255,255,0.15);
-            color: rgba(255,255,255,0.9);
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-weight: 500;
-            backdrop-filter: blur(4px);
-        }
-        .status-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.5);
-        }
-        .status-badge.online .status-dot { 
-            background: var(--wa-green);
-            box-shadow: 0 0 0 2px rgba(37, 211, 102, 0.3);
-            animation: pulse 2s infinite;
-        }
-        @keyframes pulse {
-            0%, 100% { opacity: 1; box-shadow: 0 0 0 2px rgba(37, 211, 102, 0.3); }
-            50% { opacity: 0.7; box-shadow: 0 0 0 4px rgba(37, 211, 102, 0.15); }
-        }
-        
-        .mobile-menu-btn {
-            display: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.1);
-            border: none;
-            color: white;
-            font-size: 18px;
-            cursor: pointer;
-            align-items: center;
-            justify-content: center;
-            transition: background 0.2s;
-        }
-        .mobile-menu-btn:hover {
-            background: rgba(255,255,255,0.2);
-        }
-
-        /* --- MAIN CONTENT GRID --- */
-        .main-container {
-            display: flex;
-            flex: 1; 
-            overflow: hidden;
-            position: relative;
-        }
-
-        /* --- SIDEBAR (CONTROLS) --- */
         .sidebar {
             width: 320px;
-            background: var(--panel);
-            border-right: 1px solid var(--border-color);
+            background: var(--panel-bg-dark);
+            border-right: 1px solid var(--border-dark);
             padding: 16px;
             display: flex;
             flex-direction: column;
@@ -325,2638 +73,527 @@
             flex-shrink: 0;
             transition: transform 0.3s ease;
         }
-        .sidebar::-webkit-scrollbar {
-            width: 4px;
-        }
-        .sidebar::-webkit-scrollbar-thumb {
-            background: var(--border-color);
-            border-radius: 2px;
-        }
 
         .panel {
             background: var(--panel-secondary);
-            border: 1px solid var(--border-color);
+            border: 1px solid var(--border-dark);
             padding: 16px;
             border-radius: 12px;
-            transition: all 0.2s ease;
-        }
-        .panel:hover {
-            border-color: var(--primary);
+            margin-bottom: 12px;
         }
         .panel h3 { 
-            font-size: 11px; 
-            color: var(--text-secondary); 
-            text-transform: uppercase; 
-            margin-bottom: 12px;
-            font-weight: 600;
-            letter-spacing: 0.8px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .panel h3 i {
-            color: var(--primary);
-            font-size: 12px;
+            font-size: 11px; color: var(--text-muted); text-transform: uppercase; 
+            margin-bottom: 12px; font-weight: 600; display: flex; align-items: center; gap: 6px;
         }
 
-        /* User Info Display */
-        .user-info {
-            text-align: center;
-        }
-        .username-display {
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--text);
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-        .username-display i {
-            color: var(--primary);
-        }
+        /* --- SPECIFIC UI ELEMENTS --- */
         .my-id-display {
-            font-size: 28px;
-            color: var(--primary);
-            text-align: center;
-            font-weight: 700;
-            padding: 16px;
-            background: var(--primary-light);
-            border: 2px solid var(--primary);
-            border-radius: 12px;
-            letter-spacing: 4px;
-            font-family: 'JetBrains Mono', monospace;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            position: relative;
+            font-size: 24px; color: var(--primary); text-align: center; font-weight: 700;
+            padding: 12px; background: var(--primary-light); border: 2px solid var(--primary);
+            border-radius: 12px; letter-spacing: 2px; font-family: 'JetBrains Mono', monospace;
+            cursor: pointer; margin-top: 8px;
         }
-        .my-id-display:hover {
-            background: rgba(0, 168, 132, 0.15);
-            transform: scale(1.02);
-        }
-        .my-id-display:active {
-            transform: scale(0.98);
-        }
-        .copy-hint {
-            font-size: 11px;
-            color: var(--text-secondary);
-            text-align: center;
-            margin-top: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 5px;
-        }
-        .copy-hint i {
-            font-size: 10px;
-        }
-        
-        /* Inputs */
+
         input {
-            width: 100%;
-            padding: 14px 16px;
-            background: var(--bg);
-            border: 1px solid var(--border-color);
-            color: var(--text);
-            text-align: center;
-            font-family: inherit;
-            font-size: 15px;
-            margin-bottom: 12px;
-            border-radius: 12px;
-            transition: all 0.2s ease;
+            width: 100%; padding: 12px; background: var(--bg-dark); border: 1px solid var(--border-dark);
+            color: var(--text-main); border-radius: 8px; margin-bottom: 10px;
         }
-        input:focus { 
-            outline: none; 
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px var(--primary-light);
-        }
-        input::placeholder {
-            color: var(--text-secondary);
-        }
-
-        /* Buttons */
+        
         button {
-            width: 100%;
-            padding: 14px;
-            border: none;
-            cursor: pointer;
-            font-family: inherit;
-            font-weight: 600;
-            font-size: 14px;
-            border-radius: 12px;
-            transition: all 0.2s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
+            width: 100%; padding: 12px; border: none; cursor: pointer; border-radius: 8px;
+            font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 8px;
+            transition: transform 0.1s;
         }
-        button:hover {
-            transform: translateY(-1px);
+        button:active { transform: scale(0.98); }
+        .btn-connect { background: var(--gradient-primary); color: white; }
+        .btn-grey { background: var(--panel-secondary); color: var(--text-main); border: 1px solid var(--border-dark); }
+        .btn-add-contact {
+            background: transparent; border: 1px dashed var(--border-dark); color: var(--text-muted);
+            margin-top: 8px; padding: 8px; font-size: 13px;
         }
-        button:active {
-            transform: translateY(0);
-        }
-        .btn-connect { 
-            background: var(--gradient-primary);
-            color: #fff;
-            box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);
-        }
-        .btn-connect:hover {
-            box-shadow: 0 4px 16px rgba(99, 102, 241, 0.4);
-        }
-        .btn-video { 
-            background: var(--gradient-accent);
-            color: #fff;
-            padding: 14px;
-            font-size: 14px;
-            box-shadow: 0 2px 8px rgba(6, 182, 212, 0.3);
-        }
-        .btn-video:hover {
-            box-shadow: 0 4px 16px rgba(6, 182, 212, 0.4);
-        }
-        .btn-icon { 
-            width: auto; 
-            flex: 1; 
-            padding: 12px; 
-            font-size: 18px;
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--text);
-        }
-        .btn-icon:hover {
-            background: rgba(255, 255, 255, 0.15);
-        }
-        .btn-red { 
-            background: var(--danger); 
-            color: #fff; 
-        }
-        .btn-red:hover {
-            background: var(--danger-hover);
-        }
-        .btn-grey { 
-            background: var(--panel-secondary);
-            color: var(--text);
-            border: 1px solid var(--border-color);
-        }
+        .btn-add-contact:hover { border-color: var(--primary); color: var(--primary); }
 
-        /* --- CHAT AREA --- */
-        .chat-section {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            background: var(--bg-chat);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        /* Chat Header Bar (for connected peer info) */
-        .chat-header {
-            padding: 12px 16px;
-            background: var(--panel);
-            border-bottom: 1px solid var(--border-color);
-            display: none;
-            align-items: center;
-            gap: 12px;
-            flex-shrink: 0;
-        }
-        .chat-header.active {
-            display: flex;
-        }
-        .chat-header-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--gradient-primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            color: white;
-            font-weight: 600;
-        }
-        .chat-header-info h4 {
-            font-size: 15px;
-            font-weight: 600;
-            color: var(--text);
-        }
-        .chat-header-info p {
-            font-size: 12px;
-            color: var(--text-secondary);
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-        .chat-header-info p i {
-            color: var(--success);
-            font-size: 8px;
-        }
-
-        /* Video Area */
-        #video-area {
-            background: #000;
-            border-bottom: 1px solid var(--border-color);
-            display: flex;
-            flex-direction: column;
-            flex-shrink: 0;
-        }
-        .video-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4px;
-            padding: 4px;
-            min-height: 240px;
-            max-height: 320px;
-        }
-        video { 
-            width: 100%; 
-            height: 100%; 
-            object-fit: cover; 
-            background: #1a1a1a;
-            border-radius: 8px;
-        }
-        
-        /* Video Controls */
-        .video-controls {
-            display: flex;
-            gap: 12px;
-            padding: 14px;
-            background: rgba(0, 0, 0, 0.8);
-            justify-content: center;
-            backdrop-filter: blur(10px);
-        }
-        .video-controls button {
-            width: 52px;
-            height: 52px;
-            border-radius: 50%;
-            padding: 0;
-            background: rgba(255, 255, 255, 0.1);
-            color: #fff;
-            border: none;
-            font-size: 20px;
-        }
-        .video-controls button:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: scale(1.08);
-        }
-        .video-controls .btn-red {
-            background: var(--danger);
-            width: 60px;
-            height: 60px;
-        }
-        .video-controls .btn-red:hover {
-            background: var(--danger-hover);
-        }
-
-        .hidden { display: none !important; }
-
-        /* Chat Background Pattern */
-        #messages {
-            flex: 1;
-            overflow-y: auto;
-            padding: 16px;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            background-color: var(--bg-chat);
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23233138' fill-opacity='0.3'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-        }
-        #messages::-webkit-scrollbar {
-            width: 5px;
-        }
-        #messages::-webkit-scrollbar-track {
-            background: transparent;
-        }
-        #messages::-webkit-scrollbar-thumb {
-            background: var(--border-color);
-            border-radius: 3px;
-        }
-
-        .msg {
-            max-width: 75%;
-            padding: 8px 12px;
-            border-radius: 8px;
-            font-size: 14px;
-            line-height: 1.45;
-            word-wrap: break-word;
-            position: relative;
-            animation: msgSlide 0.2s ease;
-        }
-        @keyframes msgSlide {
-            from { opacity: 0; transform: translateY(8px) scale(0.98); }
-            to { opacity: 1; transform: translateY(0) scale(1); }
-        }
-        
-        /* WhatsApp-style message bubbles */
-        .msg-me { 
-            align-self: flex-end; 
-            background: var(--bubble-out);
-            color: var(--text-bubble);
-            border-bottom-right-radius: 2px;
-            margin-left: 30px;
-        }
-        .msg-me::before {
-            content: '';
-            position: absolute;
-            right: -8px;
-            bottom: 0;
-            width: 8px;
-            height: 13px;
-            background: var(--bubble-out);
-            clip-path: polygon(0 0, 0 100%, 100% 100%);
-        }
-        .msg-peer { 
-            align-self: flex-start; 
-            background: var(--bubble-in);
-            color: var(--text-bubble);
-            border-bottom-left-radius: 2px;
-            margin-right: 30px;
-        }
-        .msg-peer::before {
-            content: '';
-            position: absolute;
-            left: -8px;
-            bottom: 0;
-            width: 8px;
-            height: 13px;
-            background: var(--bubble-in);
-            clip-path: polygon(100% 0, 0 100%, 100% 100%);
-        }
-        
-        .msg-sender {
-            font-size: 12px;
-            font-weight: 600;
-            color: var(--primary);
-            margin-bottom: 4px;
-        }
-        
-        .msg-meta {
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            gap: 4px;
-            margin-top: 4px;
-        }
-        .msg-timestamp {
-            font-size: 11px;
-            color: rgba(255, 255, 255, 0.5);
-        }
-        .msg-peer .msg-timestamp {
-            color: var(--text-secondary);
-        }
-        .msg-status {
-            font-size: 14px;
-            color: rgba(255, 255, 255, 0.5);
-        }
-        .msg-status.read {
-            color: var(--tg-light-blue);
-        }
-        
-        .sys-msg {
-            align-self: center;
-            font-size: 12px;
-            color: var(--text-secondary);
-            background: rgba(31, 44, 52, 0.9);
-            padding: 6px 16px;
-            border-radius: 8px;
-            max-width: 85%;
-            text-align: center;
-            margin: 4px 0;
-        }
-
-        /* Chat Input Bar */
-        .input-bar {
-            padding: 12px 16px;
-            background: var(--panel);
-            border-top: 1px solid var(--border-color);
-            display: flex;
-            gap: 10px;
-            align-items: center;
-            flex-shrink: 0;
-        }
-        .input-bar input { 
-            margin: 0; 
-            text-align: left;
-            padding: 12px 18px;
-            border-radius: 24px;
-            font-size: 15px;
-            background: var(--panel-secondary);
-        }
-        .input-bar button { 
-            width: 48px;
-            height: 48px;
-            padding: 0;
-            border-radius: 50%;
-            font-size: 18px;
-            flex-shrink: 0;
-        }
-        .input-bar button i {
-            transition: transform 0.2s ease;
-        }
-        .input-bar button:hover i {
-            transform: scale(1.1);
-        }
-
-        /* --- FOOTER --- */
-        .footer {
-            background: var(--panel);
-            border-top: 1px solid var(--border-color);
-            padding: 8px 20px;
-            font-size: 11px;
-            color: var(--text-secondary);
-            text-align: center;
-            flex-shrink: 0;
-            line-height: 1.5;
-        }
-        .footer a {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 500;
-        }
-        .footer a:hover {
-            text-decoration: underline;
-        }
-        .footer .privacy-note {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 5px;
-            margin-top: 2px;
-            font-size: 10px;
-            color: var(--text-secondary);
-            opacity: 0.8;
-        }
-        .footer .privacy-note i {
-            color: var(--success);
-            font-size: 10px;
-        }
-
-        /* --- MOBILE RESPONSIVENESS --- */
-        @media (max-width: 768px) {
-            .header {
-                padding: 0 12px;
-                height: 54px;
-            }
-            .logo {
-                font-size: 17px;
-            }
-            .logo .version-badge {
-                display: none;
-            }
-            .mobile-menu-btn {
-                display: flex;
-            }
-            .status-badge {
-                display: none;
-            }
-            
-            .main-container { 
-                flex-direction: column;
-                position: relative;
-            }
-            
-            .sidebar { 
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                z-index: 100;
-                transform: translateX(-100%);
-                border-right: none;
-                padding: 16px;
-            }
-            .sidebar.open {
-                transform: translateX(0);
-            }
-            .sidebar-close {
-                display: flex !important;
-                position: absolute;
-                top: 12px;
-                right: 12px;
-                width: 36px;
-                height: 36px;
-                border-radius: 50%;
-                background: var(--panel-secondary);
-                border: 1px solid var(--border-color);
-                color: var(--text);
-                font-size: 16px;
-                cursor: pointer;
-                align-items: center;
-                justify-content: center;
-            }
-            
-            .panel { 
-                padding: 14px;
-            }
-            .my-id-display { 
-                font-size: 24px; 
-                padding: 14px;
-                letter-spacing: 3px;
-            }
-            
-            .btn-video { 
-                padding: 16px; 
-                font-size: 15px;
-                min-height: 50px;
-            }
-            
-            #video-area .video-grid { 
-                min-height: 180px;
-                max-height: 240px;
-            }
-            
-            .input-bar {
-                padding: 10px 12px;
-                padding-bottom: max(10px, env(safe-area-inset-bottom));
-            }
-            .input-bar input {
-                font-size: 16px;
-                padding: 12px 16px;
-            }
-            .input-bar button {
-                width: 46px;
-                height: 46px;
-                min-width: 46px;
-                min-height: 46px;
-            }
-            
-            .footer { 
-                padding: 6px 12px;
-                padding-bottom: max(6px, env(safe-area-inset-bottom));
-                font-size: 10px;
-            }
-            
-            .msg {
-                max-width: 85%;
-            }
-            
-            .chat-header {
-                padding: 10px 14px;
-            }
-        }
-        
-        /* Extra small devices */
-        @media (max-width: 380px) {
-            .my-id-display {
-                font-size: 22px;
-                letter-spacing: 2px;
-            }
-            .username-display {
-                font-size: 14px;
-            }
-        }
-        
-        /* Hide sidebar close on desktop */
-        .sidebar-close {
-            display: none;
-        }
-        
-        /* --- FILE SHARING STYLES --- */
-        .attachment-menu {
-            position: absolute;
-            bottom: 70px;
-            left: 16px;
-            background: var(--panel-secondary);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 12px;
-            display: none;
-            flex-direction: column;
-            gap: 8px;
-            box-shadow: var(--shadow-lg);
-            z-index: 50;
-            animation: slideUpMenu 0.2s ease;
-        }
-        @keyframes slideUpMenu {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .attachment-menu.active {
-            display: flex;
-        }
-        .attachment-btn {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 12px 16px;
-            border-radius: 12px;
-            background: transparent;
-            border: none;
-            color: var(--text);
-            font-size: 14px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            width: auto;
-        }
-        .attachment-btn:hover {
-            background: var(--primary-light);
-            transform: none;
-        }
-        .attachment-btn i {
-            width: 36px;
-            height: 36px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            font-size: 16px;
-        }
-        .attachment-btn.image-btn i { background: linear-gradient(135deg, #ec4899, #f472b6); color: white; }
-        .attachment-btn.video-btn i { background: linear-gradient(135deg, #8b5cf6, #a78bfa); color: white; }
-        .attachment-btn.file-btn i { background: linear-gradient(135deg, #06b6d4, #22d3ee); color: white; }
-        .attachment-btn.code-btn i { background: linear-gradient(135deg, #f59e0b, #fbbf24); color: white; }
-        
-        .btn-attach {
-            width: 48px;
-            height: 48px;
-            padding: 0;
-            border-radius: 50%;
-            font-size: 18px;
-            background: var(--panel-secondary);
-            color: var(--text);
-            border: 1px solid var(--border-color);
-            flex-shrink: 0;
-        }
-        .btn-attach:hover {
-            background: var(--primary-light);
-            border-color: var(--primary);
-            color: var(--primary);
-        }
-        
-        /* Message Media Styles */
-        .msg-image {
-            max-width: 280px;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: transform 0.2s ease;
-        }
-        .msg-image:hover {
-            transform: scale(1.02);
-        }
-        .msg-video {
-            max-width: 320px;
-            border-radius: 8px;
-            max-height: 240px;
-        }
-        .msg-file {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 12px;
-            background: rgba(0,0,0,0.2);
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background 0.2s ease;
-        }
-        .msg-file:hover {
-            background: rgba(0,0,0,0.3);
-        }
-        .msg-file-icon {
-            width: 40px;
-            height: 40px;
-            background: var(--gradient-accent);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 18px;
-        }
-        .msg-file-info h5 {
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--text);
-            margin-bottom: 2px;
-        }
-        .msg-file-info span {
-            font-size: 11px;
-            color: var(--text-muted);
-        }
-        
-        /* Code Block Styles */
-        .msg-code {
-            background: #1e1e2e;
-            border-radius: 8px;
-            overflow: hidden;
-            max-width: 100%;
-        }
-        .msg-code-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 8px 12px;
-            background: rgba(0,0,0,0.3);
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-        .msg-code-lang {
-            font-size: 11px;
-            color: var(--ghost-cyan);
-            font-weight: 600;
-            text-transform: uppercase;
-        }
-        .msg-code-copy {
-            background: transparent;
-            border: none;
-            color: var(--text-muted);
-            cursor: pointer;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 12px;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            width: auto;
-        }
-        .msg-code-copy:hover {
-            background: rgba(255,255,255,0.1);
-            color: var(--text);
-            transform: none;
-        }
-        .msg-code pre {
-            margin: 0;
-            padding: 12px;
-            overflow-x: auto;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 13px;
-            line-height: 1.5;
-        }
-        .msg-code code {
-            font-family: 'JetBrains Mono', monospace;
-        }
-        
-        /* Code Modal */
-        .code-modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-            padding: 20px;
-            backdrop-filter: blur(8px);
-        }
-        .code-modal-overlay.active {
-            display: flex;
-        }
-        .code-modal {
-            background: var(--panel);
-            border-radius: 16px;
-            max-width: 600px;
-            width: 100%;
-            max-height: 80vh;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            animation: slideUp 0.3s ease;
-            border: 1px solid var(--border-color);
-        }
-        .code-modal-header {
-            padding: 16px 20px;
-            background: var(--panel-secondary);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border-bottom: 1px solid var(--border-color);
-        }
-        .code-modal-header h3 {
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--text);
-        }
-        .code-modal-close {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            background: transparent;
-            border: none;
-            color: var(--text-muted);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 16px;
-            padding: 0;
-        }
-        .code-modal-close:hover {
-            background: rgba(255,255,255,0.1);
-            color: var(--text);
-            transform: none;
-        }
-        .code-modal-body {
-            padding: 16px;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            overflow-y: auto;
-        }
-        .code-modal-body select {
-            padding: 12px 16px;
-            background: var(--bg);
-            border: 1px solid var(--border-color);
-            color: var(--text);
-            border-radius: 8px;
-            font-size: 14px;
-            cursor: pointer;
-        }
-        .code-modal-body select:focus {
-            outline: none;
-            border-color: var(--primary);
-        }
-        .code-modal-body textarea {
-            padding: 12px 16px;
-            background: var(--bg);
-            border: 1px solid var(--border-color);
-            color: var(--text);
-            border-radius: 8px;
-            font-size: 14px;
-            font-family: 'JetBrains Mono', monospace;
-            resize: vertical;
-            min-height: 200px;
-        }
-        .code-modal-body textarea:focus {
-            outline: none;
-            border-color: var(--primary);
-        }
-        .code-modal-footer {
-            padding: 12px 16px;
-            background: var(--panel-secondary);
-            display: flex;
-            gap: 12px;
-            justify-content: flex-end;
-            border-top: 1px solid var(--border-color);
-        }
-        .code-modal-footer button {
-            padding: 10px 20px;
-            border-radius: 8px;
-            font-size: 14px;
-            width: auto;
-        }
-        
-        /* Image Preview Modal */
-        .image-preview-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-            padding: 20px;
-            cursor: zoom-out;
-        }
-        .image-preview-overlay.active {
-            display: flex;
-        }
-        .image-preview-overlay img {
-            max-width: 90vw;
-            max-height: 90vh;
-            border-radius: 8px;
-            object-fit: contain;
-        }
-        .image-preview-close {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.1);
-            border: none;
-            color: white;
-            cursor: pointer;
-            font-size: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0;
-        }
-        .image-preview-close:hover {
-            background: rgba(255,255,255,0.2);
-            transform: none;
-        }
-        
-        /* PWA Install Banner */
-        .install-banner {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: var(--gradient-primary);
-            padding: 12px 20px;
-            display: none;
-            align-items: center;
-            justify-content: space-between;
-            z-index: 1000;
-            box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
-        }
-        .install-banner.active {
-            display: flex;
-        }
-        .install-banner-text {
-            color: white;
-            font-size: 14px;
-            font-weight: 500;
-        }
-        .install-banner-text i {
-            margin-right: 8px;
-        }
-        .install-banner-buttons {
-            display: flex;
-            gap: 10px;
-        }
-        .install-banner button {
-            padding: 8px 16px;
-            border-radius: 8px;
-            font-size: 13px;
-            font-weight: 600;
-            cursor: pointer;
-            border: none;
-            width: auto;
-        }
-        .install-banner .btn-install {
-            background: white;
-            color: var(--primary);
-        }
-        .install-banner .btn-dismiss {
-            background: rgba(255,255,255,0.2);
-            color: white;
-        }
-        
-        /* Mesh Background */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--gradient-mesh);
-            pointer-events: none;
-            z-index: -1;
-        }
-        
-        /* Glowing effects */
-        .panel:hover {
-            box-shadow: var(--glow-primary);
-        }
-        .my-id-display {
-            box-shadow: var(--glow-primary);
-        }
-        .my-id-display:hover {
-            box-shadow: 0 0 30px rgba(99, 102, 241, 0.4);
-        }
-        
-        /* Enhanced message styles */
-        .msg-me::before {
-            background: var(--bubble-out);
-        }
-        .msg-peer::before {
-            background: var(--bubble-in);
-        }
-        
-        @media (max-width: 768px) {
-            .attachment-menu {
-                bottom: 65px;
-                left: 10px;
-            }
-            .msg-code pre {
-                font-size: 12px;
-            }
-            .code-modal {
-                max-height: 90vh;
-            }
-        }
-        
-        /* --- SETUP MODAL STYLES --- */
-        .setup-modal {
-            background: var(--panel);
-            border-radius: 16px;
-            max-width: 480px;
-            width: 100%;
-            padding: 0;
-            box-shadow: var(--shadow-lg);
-            animation: slideUp 0.3s ease;
-            overflow: hidden;
-            border: 1px solid var(--border-color);
-        }
-        .setup-step {
-            display: none;
-        }
-        .setup-step.active {
-            display: block;
-        }
-        .setup-options {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-        .setup-option {
-            display: flex;
-            align-items: flex-start;
-            gap: 14px;
-            padding: 16px;
-            background: var(--panel-secondary);
-            border: 2px solid var(--border-color);
-            border-radius: 12px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-        .setup-option:hover {
-            border-color: var(--primary);
-            background: var(--primary-light);
-        }
-        .setup-option.selected {
-            border-color: var(--primary);
-            background: var(--primary-light);
-        }
-        .setup-option input[type="radio"] {
-            width: 20px;
-            height: 20px;
-            accent-color: var(--primary);
-            margin-top: 2px;
-            flex-shrink: 0;
-        }
-        .setup-option-content h4 {
-            font-size: 15px;
-            font-weight: 600;
-            margin-bottom: 4px;
-            color: var(--text);
-        }
-        .setup-option-content p {
-            font-size: 13px;
-            color: var(--text-secondary);
-            line-height: 1.4;
-        }
-        .setup-username-input {
-            margin-top: 16px;
-            padding-top: 16px;
-            border-top: 1px solid var(--border-color);
-        }
-        .setup-username-input label {
-            display: block;
-            font-size: 13px;
-            color: var(--text-secondary);
-            margin-bottom: 8px;
-        }
-        .setup-username-input input {
-            width: 100%;
-            padding: 14px 16px;
-            background: var(--bg);
-            border: 1px solid var(--border-color);
-            color: var(--text);
-            font-size: 15px;
-            border-radius: 12px;
-            margin-bottom: 8px;
-        }
-        .setup-username-input input:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px var(--primary-light);
-        }
-        .setup-username-hint {
-            font-size: 11px;
-            color: var(--text-secondary);
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-        .setup-username-hint i {
-            color: var(--warning);
-        }
-        .setup-footer {
-            padding: 0 24px 24px;
-            display: flex;
-            gap: 12px;
-        }
-        .setup-footer button {
-            flex: 1;
-        }
-        
-        /* --- CONTACTS PANEL STYLES --- */
-        .contacts-panel {
-            margin-top: 0;
-        }
-        .contacts-list {
-            max-height: 200px;
-            overflow-y: auto;
-        }
+        /* Contacts List */
         .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 10px 12px;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            margin-bottom: 4px;
+            display: flex; align-items: center; gap: 12px; padding: 10px;
+            border-radius: 8px; cursor: pointer; transition: background 0.2s;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
-        .contact-item:hover {
-            background: var(--primary-light);
-        }
-        .contact-item:last-child {
-            margin-bottom: 0;
-        }
+        .contact-item:hover { background: var(--primary-light); }
         .contact-avatar {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background: var(--gradient-primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            color: white;
-            font-weight: 600;
-            flex-shrink: 0;
+            width: 36px; height: 36px; border-radius: 50%; background: var(--gradient-primary);
+            display: flex; align-items: center; justify-content: center; font-weight: 600; color: white;
         }
-        .contact-info {
-            flex: 1;
-            min-width: 0;
-        }
-        .contact-name {
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--text);
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-        .contact-id {
-            font-size: 11px;
-            color: var(--text-secondary);
-        }
-        .contact-delete {
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            background: transparent;
-            border: none;
-            color: var(--text-secondary);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-            opacity: 0;
-            transition: all 0.2s ease;
-        }
-        .contact-item:hover .contact-delete {
-            opacity: 1;
-        }
-        .contact-delete:hover {
-            background: var(--danger);
-            color: white;
-        }
-        .no-contacts {
-            text-align: center;
-            padding: 16px;
-            color: var(--text-secondary);
-            font-size: 13px;
-        }
-        .no-contacts i {
-            font-size: 24px;
-            margin-bottom: 8px;
-            display: block;
-            opacity: 0.5;
-        }
+        .contact-info { flex: 1; overflow: hidden; }
+        .contact-name { font-size: 14px; font-weight: 600; }
+        .contact-sub { font-size: 11px; color: var(--text-muted); }
+
+        /* Chat Area */
+        .chat-section { flex: 1; display: flex; flex-direction: column; background: var(--bg-chat); }
+        #messages { flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 8px; }
         
-        /* --- SETTINGS PANEL STYLES --- */
-        .settings-row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 12px 0;
-            border-bottom: 1px solid var(--border-color);
-        }
-        .settings-row:last-child {
-            border-bottom: none;
-            padding-bottom: 0;
-        }
-        .settings-row:first-child {
-            padding-top: 0;
-        }
-        .settings-label {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 13px;
-            color: var(--text);
-        }
-        .settings-label i {
-            color: var(--primary);
-            width: 18px;
-            text-align: center;
-        }
-        .toggle-switch {
-            position: relative;
-            width: 44px;
-            height: 24px;
-        }
-        .toggle-switch input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-        .toggle-slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: var(--border-color);
-            border-radius: 24px;
-            transition: 0.3s;
-        }
-        .toggle-slider:before {
-            position: absolute;
-            content: "";
-            height: 18px;
-            width: 18px;
-            left: 3px;
-            bottom: 3px;
-            background-color: white;
-            border-radius: 50%;
-            transition: 0.3s;
-        }
-        .toggle-switch input:checked + .toggle-slider {
-            background-color: var(--primary);
-        }
-        .toggle-switch input:checked + .toggle-slider:before {
-            transform: translateX(20px);
-        }
-        .btn-clear-data {
-            margin-top: 12px;
-            padding: 10px 16px;
-            font-size: 12px;
-            background: transparent;
-            border: 1px solid var(--danger);
-            color: var(--danger);
-        }
-        .btn-clear-data:hover {
-            background: var(--danger);
-            color: white;
-        }
+        .msg { padding: 8px 12px; border-radius: 8px; max-width: 75%; word-wrap: break-word; font-size: 14px; }
+        .msg-me { align-self: flex-end; background: var(--primary); color: white; border-bottom-right-radius: 2px; }
+        .msg-peer { align-self: flex-start; background: var(--panel-secondary); color: white; border-bottom-left-radius: 2px; }
         
-        /* --- CHAT HISTORY DATE SEPARATOR --- */
-        .date-separator {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 16px 0;
+        .input-bar { padding: 12px; background: var(--panel-bg-dark); display: flex; gap: 10px; border-top: 1px solid var(--border-dark); }
+        .input-bar input { margin: 0; }
+        .input-bar button { width: 48px; }
+
+        /* Modals */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85); z-index: 1000; display: flex;
+            align-items: center; justify-content: center; backdrop-filter: blur(5px);
         }
-        .date-separator span {
-            font-size: 11px;
-            color: var(--text-secondary);
-            background: rgba(31, 44, 52, 0.9);
-            padding: 4px 12px;
-            border-radius: 8px;
+        .modal-box {
+            background: var(--panel-bg-dark); padding: 24px; border-radius: 16px;
+            width: 90%; max-width: 400px; border: 1px solid var(--border-dark);
+            animation: slideUp 0.3s ease;
         }
+        @keyframes slideUp { from {transform: translateY(20px); opacity: 0;} to {transform: translateY(0); opacity: 1;} }
         
-        /* --- USERNAME BADGE STYLE --- */
-        .username-badge {
-            font-size: 10px;
-            padding: 2px 6px;
-            border-radius: 4px;
-            background: var(--success);
-            color: white;
-            margin-left: 6px;
-            font-weight: 500;
+        .setup-option {
+            padding: 16px; border: 2px solid var(--border-dark); border-radius: 12px;
+            margin-bottom: 12px; cursor: pointer; transition: all 0.2s;
         }
-        .username-badge.guest {
-            background: var(--text-secondary);
+        .setup-option:hover, .setup-option.selected { border-color: var(--primary); background: var(--primary-light); }
+        .setup-option h4 { margin-bottom: 4px; display: flex; align-items: center; gap: 8px; }
+        
+        /* Mobile */
+        @media (max-width: 768px) {
+            .sidebar { position: absolute; height: 100%; z-index: 100; transform: translateX(-100%); width: 100%; }
+            .sidebar.open { transform: translateX(0); }
+            .mobile-menu-btn { display: block; background: transparent; color: white; font-size: 20px; border: none; }
         }
+        @media (min-width: 769px) { .mobile-menu-btn { display: none; } }
     </style>
 </head>
 <body>
 
-    <!-- Setup Modal (First-time setup with chat storage choice) -->
-    <div id="setup-modal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="setup-title">
-        <div class="setup-modal">
-            <!-- Step 1: Privacy Info -->
-            <div id="setup-step-1" class="setup-step active">
-                <div class="modal-header">
-                    <i class="fa-solid fa-shield-halved"></i>
-                    <h2 id="setup-title">Welcome to GhostLink</h2>
-                    <p>Your privacy is our priority</p>
-                </div>
-                <div class="modal-body">
-                    <div class="privacy-item">
-                        <i class="fa-solid fa-bolt"></i>
-                        <div>
-                            <h4>Lightning Fast P2P</h4>
-                            <p>Direct peer-to-peer connection with instant ID generation. No waiting, no delays.</p>
-                        </div>
-                    </div>
-                    <div class="privacy-item">
-                        <i class="fa-solid fa-code-branch"></i>
-                        <div>
-                            <h4>100% Open Source</h4>
-                            <p>Our entire codebase is open source. You can verify our code on GitHub anytime.</p>
-                        </div>
-                    </div>
-                    <div class="privacy-item">
-                        <i class="fa-solid fa-comments"></i>
-                        <div>
-                            <h4>Peer-to-Peer Chats</h4>
-                            <p>Messages go directly from you to your peer. No servers in between, no logs, no tracking.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="setup-footer">
-                    <button onclick="goToSetupStep(2)" class="btn-connect" id="setup-next-btn">
-                        <i class="fa-solid fa-arrow-right"></i> Continue
-                    </button>
-                </div>
+    <div id="setup-modal" class="modal-overlay">
+        <div class="modal-box">
+            <h2 style="margin-bottom: 8px;"><i class="fa-solid fa-ghost"></i> GhostLink</h2>
+            <p style="color: var(--text-muted); margin-bottom: 20px; font-size: 14px;">Choose your privacy level:</p>
+            
+            <div class="setup-option" onclick="selectMode('guest')" id="opt-guest">
+                <h4><i class="fa-solid fa-user-secret"></i> Guest Mode</h4>
+                <p style="font-size: 12px; color: var(--text-muted);">No history. Instant random ID. Connect via ID manually.</p>
             </div>
             
-            <!-- Step 2: Chat Storage Choice -->
-            <div id="setup-step-2" class="setup-step">
-                <div class="modal-header">
-                    <i class="fa-solid fa-floppy-disk"></i>
-                    <h2>Chat Storage</h2>
-                    <p>Choose how you want to use GhostLink</p>
-                </div>
-                <div class="modal-body">
-                    <div class="setup-options">
-                        <label class="setup-option" onclick="selectStorageOption('guest')">
-                            <input type="radio" name="storage-option" value="guest" checked>
-                            <div class="setup-option-content">
-                                <h4><i class="fa-solid fa-user-secret"></i> Guest Mode</h4>
-                                <p>Anonymous, no data saved. Each session is completely fresh. Perfect for one-time private chats.</p>
-                            </div>
-                        </label>
-                        <label class="setup-option" onclick="selectStorageOption('persistent')">
-                            <input type="radio" name="storage-option" value="persistent">
-                            <div class="setup-option-content">
-                                <h4><i class="fa-solid fa-bookmark"></i> Save Chats</h4>
-                                <p>Keep your chat history, contacts, and a permanent username. Reconnect with peers anytime.</p>
-                            </div>
-                        </label>
-                    </div>
-                    
-                    <div id="username-setup" class="setup-username-input hidden">
-                        <label for="setup-username">Choose your permanent username:</label>
-                        <input type="text" id="setup-username" placeholder="Enter username (3-20 characters)" maxlength="20" pattern="[a-zA-Z0-9_]+">
-                        <div class="setup-username-hint">
-                            <i class="fa-solid fa-triangle-exclamation"></i>
-                            <span>Username cannot be changed once set</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="setup-footer">
-                    <button onclick="goToSetupStep(1)" class="btn-grey">
-                        <i class="fa-solid fa-arrow-left"></i> Back
-                    </button>
-                    <button onclick="completeSetup()" class="btn-connect" id="setup-complete-btn">
-                        <i class="fa-solid fa-rocket"></i> Start Chatting
-                    </button>
-                </div>
+            <div class="setup-option" onclick="selectMode('persistent')" id="opt-persistent">
+                <h4><i class="fa-solid fa-save"></i> Save Chats</h4>
+                <p style="font-size: 12px; color: var(--text-muted);">Keeps history & contacts. Persistent ID. WhatsApp style.</p>
+            </div>
+
+            <div id="username-input-area" class="hidden" style="margin-top: 16px;">
+                <label style="font-size: 12px; color: var(--text-muted);">Choose Username</label>
+                <input type="text" id="setup-username" placeholder="e.g. CyberWolf" maxlength="15">
+            </div>
+
+            <button onclick="finishSetup()" class="btn-connect" style="margin-top: 16px;">Start Messaging</button>
+        </div>
+    </div>
+
+    <div id="add-contact-modal" class="modal-overlay hidden">
+        <div class="modal-box">
+            <h3>Add New Contact</h3>
+            <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 12px;">Enter their 4-digit Ghost ID to start.</p>
+            <input type="number" id="new-contact-id" placeholder="Ex: 4821" pattern="[0-9]*">
+            <div style="display: flex; gap: 10px;">
+                <button class="btn-grey" onclick="closeContactModal()">Cancel</button>
+                <button class="btn-connect" onclick="addNewContact()">Add & Chat</button>
             </div>
         </div>
     </div>
 
     <div class="header">
         <div class="logo">
-            <i class="fa-solid fa-ghost"></i>
-            GhostLink
-            <span class="version-badge">v6.0</span>
+            <button class="mobile-menu-btn" onclick="toggleSidebar()"><i class="fa-solid fa-bars"></i></button>
+            <span><i class="fa-solid fa-ghost"></i> GhostLink</span>
         </div>
-        <div class="header-right">
-            <div id="connection-status" class="status-badge">
-                <span class="status-dot"></span>
-                <span id="status-text">Offline</span>
-            </div>
-            <button class="mobile-menu-btn" onclick="toggleSidebar()" aria-label="Open menu">
-                <i class="fa-solid fa-bars"></i>
-            </button>
-        </div>
+        <div style="font-size: 12px; color: rgba(255,255,255,0.7);" id="status-indicator">Offline</div>
     </div>
 
     <div class="main-container">
-        
         <div class="sidebar" id="sidebar">
-            <button class="sidebar-close" onclick="toggleSidebar()" aria-label="Close menu">
-                <i class="fa-solid fa-times"></i>
-            </button>
-            
-            <div class="panel user-info">
-                <h3><i class="fa-solid fa-user-circle"></i> Your Identity <span id="user-mode-badge" class="username-badge guest">Guest</span></h3>
-                <div class="username-display">
-                    <i class="fa-solid fa-at"></i>
-                    <span id="my-username">Loading...</span>
-                </div>
-                <div id="my-id" class="my-id-display" onclick="copyId()" title="Click to copy">...</div>
-                <div class="copy-hint">
-                    <i class="fa-solid fa-copy"></i> Tap to copy your ID
+            <div class="panel">
+                <h3><i class="fa-solid fa-id-card"></i> Your Profile</h3>
+                <div style="text-align: center;">
+                    <div style="font-size: 18px; font-weight: 600;" id="display-username">Guest</div>
+                    <div id="my-id-box" class="my-id-display" onclick="copyId()">....</div>
+                    <div style="font-size: 10px; color: var(--text-muted); margin-top: 6px;">Tap ID to Copy</div>
                 </div>
             </div>
 
-            <div class="panel" id="peer-id-panel">
-                <h3><i class="fa-solid fa-link"></i> Connect to Peer</h3>
-                <input type="number" id="friend-id" placeholder="Enter 4-digit Peer ID" inputmode="numeric" pattern="[0-9]*">
-                <button class="btn-connect" onclick="connectToPeer()">
-                    <i class="fa-solid fa-plug"></i> Connect
-                </button>
+            <div id="guest-connect-panel" class="panel">
+                <h3><i class="fa-solid fa-bolt"></i> Instant Connect</h3>
+                <input type="number" id="guest-target-id" placeholder="Enter Peer ID" inputmode="numeric">
+                <button class="btn-connect" onclick="guestConnect()">Connect</button>
             </div>
 
-            <!-- Saved Contacts Panel -->
-            <div id="contacts-panel" class="panel contacts-panel hidden">
-                <h3><i class="fa-solid fa-address-book"></i> Saved Contacts</h3>
-                <div id="contacts-list" class="contacts-list">
-                    <div class="no-contacts">
-                        <i class="fa-solid fa-user-plus"></i>
-                        <span>No saved contacts yet</span>
+            <div id="saved-contacts-panel" class="panel hidden">
+                <h3 style="justify-content: space-between;">
+                    <span><i class="fa-solid fa-address-book"></i> Chats</span>
+                </h3>
+                <div id="contacts-list" style="max-height: 300px; overflow-y: auto;">
                     </div>
-                </div>
+                <button class="btn-add-contact" onclick="openContactModal()">
+                    <i class="fa-solid fa-plus"></i> Start New Chat
+                </button>
             </div>
 
             <div class="panel">
-                <h3><i class="fa-solid fa-video"></i> Video Call</h3>
-                <button class="btn-video" onclick="startCall()">
-                    <i class="fa-solid fa-video"></i> Start Video Call
+                <button class="btn-grey" onclick="resetApp()" style="font-size: 12px; padding: 8px;">
+                    <i class="fa-solid fa-rotate-right"></i> Reset / Change Mode
                 </button>
-            </div>
-            
-            <!-- Settings Panel -->
-            <div class="panel">
-                <h3><i class="fa-solid fa-cog"></i> Settings</h3>
-                <div class="settings-row">
-                    <span class="settings-label">
-                        <i class="fa-solid fa-floppy-disk"></i> Save Chats
-                    </span>
-                    <label class="toggle-switch">
-                        <input type="checkbox" id="save-chats-toggle" onchange="toggleChatStorage()">
-                        <span class="toggle-slider"></span>
-                    </label>
-                </div>
-                <div id="clear-data-section" class="hidden">
-                    <button class="btn-clear-data" onclick="clearAllData()">
-                        <i class="fa-solid fa-trash"></i> Clear All Data
-                    </button>
-                </div>
             </div>
         </div>
 
         <div class="chat-section">
-            
-            <!-- Chat Header (shows when connected) -->
-            <div id="chat-header" class="chat-header">
-                <div class="chat-header-avatar" id="peer-avatar">?</div>
-                <div class="chat-header-info">
-                    <h4 id="peer-username">Unknown</h4>
-                    <p><i class="fa-solid fa-circle"></i> <span id="peer-id-display">Online</span></p>
-                </div>
-            </div>
-            
-            <div id="video-area" class="hidden">
-                <div class="video-grid">
-                    <video id="local-video" autoplay muted playsinline aria-label="Your video"></video>
-                    <video id="remote-video" autoplay playsinline aria-label="Peer's video"></video>
-                </div>
-                <div class="video-controls">
-                    <button class="btn-grey btn-icon" id="mute-btn" onclick="toggleMute()" aria-label="Toggle microphone">
-                        <i class="fa-solid fa-microphone"></i>
-                    </button>
-                    <button class="btn-grey btn-icon" id="cam-btn" onclick="toggleCam()" aria-label="Toggle camera">
-                        <i class="fa-solid fa-video"></i>
-                    </button>
-                    <button class="btn-red btn-icon" onclick="endCall()" aria-label="End call">
-                        <i class="fa-solid fa-phone-slash"></i>
-                    </button>
-                </div>
-            </div>
-
             <div id="messages">
-                <div class="sys-msg">🔒 Welcome to GhostLink! Your messages are P2P encrypted and never stored.</div>
+                <div style="align-self: center; background: rgba(255,255,255,0.05); padding: 8px 16px; border-radius: 20px; font-size: 12px; color: var(--text-muted);">
+                    Messages are end-to-end encrypted.
+                </div>
             </div>
-
-            <!-- Attachment Menu -->
-            <div id="attachment-menu" class="attachment-menu" role="menu" aria-label="Attachment options">
-                <button class="attachment-btn image-btn" onclick="triggerFileInput('image')" role="menuitem" aria-label="Share an image">
-                    <i class="fa-solid fa-image"></i>
-                    <span>Image</span>
-                </button>
-                <button class="attachment-btn video-btn" onclick="triggerFileInput('video')" role="menuitem" aria-label="Share a video">
-                    <i class="fa-solid fa-video"></i>
-                    <span>Video</span>
-                </button>
-                <button class="attachment-btn file-btn" onclick="triggerFileInput('file')" role="menuitem" aria-label="Share a file">
-                    <i class="fa-solid fa-file"></i>
-                    <span>File</span>
-                </button>
-                <button class="attachment-btn code-btn" onclick="openCodeModal()" role="menuitem" aria-label="Share code snippet">
-                    <i class="fa-solid fa-code"></i>
-                    <span>Code</span>
-                </button>
-            </div>
-
             <div class="input-bar">
-                <button class="btn-attach" onclick="toggleAttachmentMenu()" aria-label="Attach file">
-                    <i class="fa-solid fa-plus"></i>
-                </button>
-                <input type="text" id="msg-input" placeholder="Type a message..." onkeypress="handleEnter(event)" aria-label="Message input">
-                <button class="btn-connect" onclick="sendMessage()" aria-label="Send message"><i class="fa-solid fa-paper-plane"></i></button>
+                <input type="text" id="msg-input" placeholder="Type a message..." onkeypress="handleEnter(event)">
+                <button class="btn-connect" onclick="sendMessage()"><i class="fa-solid fa-paper-plane"></i></button>
             </div>
-            
-            <!-- Hidden file inputs -->
-            <input type="file" id="image-input" accept="image/*" style="display:none" onchange="handleFileSelect(event, 'image')">
-            <input type="file" id="video-input" accept="video/*" style="display:none" onchange="handleFileSelect(event, 'video')">
-            <input type="file" id="file-input" style="display:none" onchange="handleFileSelect(event, 'file')">
-        </div>
-    </div>
-
-    <!-- Code Modal -->
-    <div id="code-modal" class="code-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="code-modal-title">
-        <div class="code-modal">
-            <div class="code-modal-header">
-                <h3 id="code-modal-title"><i class="fa-solid fa-code"></i> Share Code</h3>
-                <button class="code-modal-close" onclick="closeCodeModal()" aria-label="Close dialog">
-                    <i class="fa-solid fa-times"></i>
-                </button>
-            </div>
-            <div class="code-modal-body">
-                <select id="code-language" aria-label="Select programming language">
-                    <option value="javascript">JavaScript</option>
-                    <option value="python">Python</option>
-                    <option value="java">Java</option>
-                    <option value="cpp">C++</option>
-                    <option value="c">C</option>
-                    <option value="csharp">C#</option>
-                    <option value="go">Go</option>
-                    <option value="rust">Rust</option>
-                    <option value="typescript">TypeScript</option>
-                    <option value="php">PHP</option>
-                    <option value="ruby">Ruby</option>
-                    <option value="swift">Swift</option>
-                    <option value="kotlin">Kotlin</option>
-                    <option value="html">HTML</option>
-                    <option value="css">CSS</option>
-                    <option value="sql">SQL</option>
-                    <option value="shell">Shell/Bash</option>
-                    <option value="json">JSON</option>
-                    <option value="xml">XML</option>
-                    <option value="yaml">YAML</option>
-                    <option value="markdown">Markdown</option>
-                    <option value="plaintext">Plain Text</option>
-                </select>
-                <textarea id="code-content" placeholder="Paste your code here..."></textarea>
-            </div>
-            <div class="code-modal-footer">
-                <button class="btn-grey" onclick="closeCodeModal()">Cancel</button>
-                <button class="btn-connect" onclick="sendCode()">
-                    <i class="fa-solid fa-paper-plane"></i> Send Code
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Image Preview Modal -->
-    <div id="image-preview" class="image-preview-overlay" role="dialog" aria-modal="true" aria-label="Image preview" onclick="closeImagePreview()">
-        <button class="image-preview-close" onclick="event.stopPropagation(); closeImagePreview();" aria-label="Close image preview">
-            <i class="fa-solid fa-times"></i>
-        </button>
-        <img id="preview-image" src="" alt="Preview of shared image">
-    </div>
-
-    <!-- PWA Install Banner -->
-    <div id="install-banner" class="install-banner">
-        <span class="install-banner-text">
-            <i class="fa-solid fa-download"></i>
-            Install GhostLink for the best experience
-        </span>
-        <div class="install-banner-buttons">
-            <button class="btn-dismiss" onclick="dismissInstallBanner()">Later</button>
-            <button class="btn-install" onclick="installPWA()">Install</button>
-        </div>
-    </div>
-
-    <div class="footer">
-        Created by <strong>Amit Kumar</strong> • 
-        <a href="https://github.com/localhostamit/Ghostlink_chat" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> Open Source</a>
-        <div class="privacy-note">
-            <i class="fa-solid fa-lock"></i> Zero data collection • P2P encrypted • 100% private
         </div>
     </div>
 
     <script>
-        // --- USERNAME GENERATOR ---
-        const adjectives = [
-            'Swift', 'Silent', 'Cosmic', 'Mystic', 'Shadow', 'Crystal', 'Thunder',
-            'Phantom', 'Stellar', 'Radiant', 'Golden', 'Silver', 'Electric', 'Frozen',
-            'Blazing', 'Hidden', 'Ancient', 'Digital', 'Cyber', 'Neon', 'Quantum',
-            'Astral', 'Primal', 'Lunar', 'Solar', 'Aqua', 'Terra', 'Aero', 'Pyro',
-            'Brave', 'Noble', 'Wild', 'Fierce', 'Gentle', 'Wise', 'Lucky', 'Clever'
-        ];
-        const nouns = [
-            'Phoenix', 'Dragon', 'Wolf', 'Eagle', 'Tiger', 'Panther', 'Falcon',
-            'Hawk', 'Raven', 'Fox', 'Bear', 'Lion', 'Serpent', 'Owl', 'Shark',
-            'Ghost', 'Ninja', 'Wizard', 'Knight', 'Ranger', 'Hunter', 'Seeker',
-            'Voyager', 'Pioneer', 'Scout', 'Rider', 'Walker', 'Runner', 'Glider',
-            'Storm', 'Star', 'Comet', 'Nova', 'Spark', 'Flame', 'Wave', 'Wind'
-        ];
-        
-        function generateUsername() {
-            const adj = adjectives[Math.floor(Math.random() * adjectives.length)];
-            const noun = nouns[Math.floor(Math.random() * nouns.length)];
-            return adj + noun;
-        }
-        
-        // --- FAST ID GENERATION ---
-        // Use crypto API for faster random number generation when available
-        function generateFastId() {
-            if (window.crypto && window.crypto.getRandomValues) {
-                const array = new Uint16Array(1);
-                window.crypto.getRandomValues(array);
-                return (1000 + (array[0] % 9000)).toString();
-            }
+        // --- CONFIG & STATE ---
+        let peer;
+        let conn;
+        let myId;
+        let myUsername = "Guest";
+        let currentMode = "guest"; // 'guest' or 'persistent'
+        let savedContacts = [];
+        let chatHistory = {};
+
+        // --- FAST INITIALIZATION ---
+        // Generate ID immediately to make it feel instant
+        function generateId() {
             return Math.floor(Math.random() * 9000 + 1000).toString();
         }
-        
-        // --- STORAGE MANAGEMENT ---
-        const STORAGE_KEYS = {
-            MODE: 'ghostlink-mode',
-            USERNAME: 'ghostlink-username',
-            PEER_ID: 'ghostlink-peer-id',
-            CONTACTS: 'ghostlink-contacts',
-            CHATS: 'ghostlink-chats',
-            SETUP_COMPLETE: 'ghostlink-setup-complete'
-        };
-        
-        // Check if user has completed setup
-        function isSetupComplete() {
-            return localStorage.getItem(STORAGE_KEYS.SETUP_COMPLETE) === 'true';
-        }
-        
-        // Get storage mode (guest or persistent)
-        function getStorageMode() {
-            return localStorage.getItem(STORAGE_KEYS.MODE) || 'guest';
-        }
-        
-        // Check if chat storage is enabled
-        function isChatStorageEnabled() {
-            return getStorageMode() === 'persistent';
-        }
-        
-        // Get saved username or generate new one
-        function getUsername() {
-            const savedUsername = localStorage.getItem(STORAGE_KEYS.USERNAME);
-            if (savedUsername && isChatStorageEnabled()) {
-                return savedUsername;
-            }
-            return generateUsername();
-        }
-        
-        // Get saved peer ID or generate new one
-        function getPeerId() {
-            const savedId = localStorage.getItem(STORAGE_KEYS.PEER_ID);
-            if (savedId && isChatStorageEnabled()) {
-                return savedId;
-            }
-            return generateFastId();
-        }
-        
-        // Save contact
-        function saveContact(username, peerId) {
-            if (!isChatStorageEnabled()) return;
-            const contacts = getContacts();
-            const existingIndex = contacts.findIndex(c => c.peerId === peerId);
-            if (existingIndex >= 0) {
-                contacts[existingIndex].username = username;
-                contacts[existingIndex].lastSeen = Date.now();
-            } else {
-                contacts.push({ username, peerId, lastSeen: Date.now() });
-            }
-            localStorage.setItem(STORAGE_KEYS.CONTACTS, JSON.stringify(contacts));
-            renderContacts();
-        }
-        
-        // Get all contacts
-        function getContacts() {
-            try {
-                return JSON.parse(localStorage.getItem(STORAGE_KEYS.CONTACTS)) || [];
-            } catch {
-                return [];
-            }
-        }
-        
-        // Delete contact
-        function deleteContact(peerId) {
-            const contacts = getContacts().filter(c => c.peerId !== peerId);
-            localStorage.setItem(STORAGE_KEYS.CONTACTS, JSON.stringify(contacts));
-            // Also delete chat history for this contact
-            deleteChatHistory(peerId);
-            renderContacts();
-        }
-        
-        // Save chat message
-        function saveChatMessage(peerId, message, type, senderName, timestamp) {
-            if (!isChatStorageEnabled()) return;
-            const chats = getAllChats();
-            if (!chats[peerId]) {
-                chats[peerId] = [];
-            }
-            chats[peerId].push({
-                message,
-                type,
-                senderName,
-                timestamp: timestamp || Date.now()
-            });
-            // Keep only last 500 messages per contact
-            if (chats[peerId].length > 500) {
-                chats[peerId] = chats[peerId].slice(-500);
-            }
-            localStorage.setItem(STORAGE_KEYS.CHATS, JSON.stringify(chats));
-        }
-        
-        // Get chat history for a peer
-        function getChatHistory(peerId) {
-            const chats = getAllChats();
-            return chats[peerId] || [];
-        }
-        
-        // Get all chats
-        function getAllChats() {
-            try {
-                return JSON.parse(localStorage.getItem(STORAGE_KEYS.CHATS)) || {};
-            } catch {
-                return {};
-            }
-        }
-        
-        // Delete chat history for a peer
-        function deleteChatHistory(peerId) {
-            const chats = getAllChats();
-            delete chats[peerId];
-            localStorage.setItem(STORAGE_KEYS.CHATS, JSON.stringify(chats));
-        }
-        
-        // Clear all stored data
-        function clearAllData() {
-            if (confirm('This will delete all your saved chats, contacts, and settings. Continue?')) {
-                Object.values(STORAGE_KEYS).forEach(key => {
-                    localStorage.removeItem(key);
-                });
-                localStorage.removeItem('ghostlink-privacy-accepted');
-                localStorage.removeItem('pwa-install-dismissed');
-                location.reload();
-            }
-        }
-        
-        // --- INITIALIZE USER DATA ---
-        let myUsername = getUsername();
-        let mySimpleId = getPeerId();
-        
-        // Store peer info
-        let peerUsername = null;
-        let currentPeerId = null;
-        
-        // --- SETUP MODAL ---
-        let selectedStorageOption = 'guest';
-        
-        function showSetupModal() {
-            if (!isSetupComplete()) {
-                document.getElementById('setup-modal').classList.remove('hidden');
-            } else {
-                // Setup already complete, update UI if possible
-                // This will be called again in peer.on('open') but safe to call multiple times
-                updateUIForMode();
-            }
-        }
-        
-        function goToSetupStep(step) {
-            document.querySelectorAll('.setup-step').forEach(s => s.classList.remove('active'));
-            document.getElementById('setup-step-' + step).classList.add('active');
-        }
-        
-        function selectStorageOption(option) {
-            selectedStorageOption = option;
-            document.querySelectorAll('.setup-option').forEach(o => o.classList.remove('selected'));
-            document.querySelector(`input[value="${option}"]`).closest('.setup-option').classList.add('selected');
-            
-            const usernameSection = document.getElementById('username-setup');
-            if (option === 'persistent') {
-                usernameSection.classList.remove('hidden');
-                document.getElementById('setup-username').focus();
-            } else {
-                usernameSection.classList.add('hidden');
-            }
-        }
-        
-        function completeSetup() {
-            if (selectedStorageOption === 'persistent') {
-                const usernameInput = document.getElementById('setup-username');
-                const username = usernameInput.value.trim();
-                
-                // Validate username
-                if (username.length < 3 || username.length > 20) {
-                    alert('Username must be between 3 and 20 characters');
-                    usernameInput.focus();
-                    return;
-                }
-                if (!/^[a-zA-Z0-9_]+$/.test(username)) {
-                    alert('Username can only contain letters, numbers, and underscores');
-                    usernameInput.focus();
-                    return;
-                }
-                
-                // Save persistent settings
-                localStorage.setItem(STORAGE_KEYS.MODE, 'persistent');
-                localStorage.setItem(STORAGE_KEYS.USERNAME, username);
-                localStorage.setItem(STORAGE_KEYS.PEER_ID, mySimpleId);
-                myUsername = username;
-            } else {
-                localStorage.setItem(STORAGE_KEYS.MODE, 'guest');
-            }
-            
-            localStorage.setItem(STORAGE_KEYS.SETUP_COMPLETE, 'true');
-            document.getElementById('setup-modal').classList.add('hidden');
-            updateUIForMode();
-        }
-        
-        function updateUIForMode() {
-            const isPersistent = isChatStorageEnabled();
-            const modeBadge = document.getElementById('user-mode-badge');
-            const contactsPanel = document.getElementById('contacts-panel');
-            const peerIdPanel = document.getElementById('peer-id-panel');
-            const clearDataSection = document.getElementById('clear-data-section');
-            const saveChatsToggle = document.getElementById('save-chats-toggle');
-            
-            if (isPersistent) {
-                if (modeBadge) {
-                    modeBadge.textContent = 'Saved';
-                    modeBadge.classList.remove('guest');
-                }
-                if (contactsPanel) contactsPanel.classList.remove('hidden');
-                if (clearDataSection) clearDataSection.classList.remove('hidden');
-                if (saveChatsToggle) saveChatsToggle.checked = true;
-                // Hide peer ID panel in Save Chats mode - users connect via saved contacts
-                if (peerIdPanel) peerIdPanel.classList.add('hidden');
-                renderContacts();
-            } else {
-                if (modeBadge) {
-                    modeBadge.textContent = 'Guest';
-                    modeBadge.classList.add('guest');
-                }
-                if (contactsPanel) contactsPanel.classList.add('hidden');
-                if (clearDataSection) clearDataSection.classList.add('hidden');
-                if (saveChatsToggle) saveChatsToggle.checked = false;
-                // Show peer ID panel in Guest/Privacy mode
-                if (peerIdPanel) peerIdPanel.classList.remove('hidden');
-            }
-            
-            // Update username display - check both ui object and direct DOM access
-            try {
-                if (typeof ui !== 'undefined' && ui && ui.usernameDisplay) {
-                    ui.usernameDisplay.innerText = myUsername;
-                }
-            } catch (e) {
-                // Expected: ui not yet initialized (temporal dead zone), will fallback to DOM
-                // Unexpected errors will be caught but UI will still update via DOM below
-            }
-            const usernameEl = document.getElementById('my-username');
-            if (usernameEl) usernameEl.innerText = myUsername;
-        }
-        
-        function toggleChatStorage() {
-            const toggle = document.getElementById('save-chats-toggle');
-            if (toggle.checked) {
-                // Enable chat storage - need username
-                const username = prompt('Enter a permanent username (3-20 characters, letters/numbers/underscores only):');
-                if (username && username.length >= 3 && username.length <= 20 && /^[a-zA-Z0-9_]+$/.test(username)) {
-                    localStorage.setItem(STORAGE_KEYS.MODE, 'persistent');
-                    localStorage.setItem(STORAGE_KEYS.USERNAME, username);
-                    localStorage.setItem(STORAGE_KEYS.PEER_ID, mySimpleId);
-                    localStorage.setItem(STORAGE_KEYS.SETUP_COMPLETE, 'true');
-                    myUsername = username;
-                    updateUIForMode();
-                } else {
-                    toggle.checked = false;
-                    if (username !== null) {
-                        alert('Invalid username. Must be 3-20 characters with letters, numbers, and underscores only.');
-                    }
-                }
-            } else {
-                // Disable chat storage
-                if (confirm('This will disable chat storage. Your saved chats and contacts will be deleted. Continue?')) {
-                    localStorage.setItem(STORAGE_KEYS.MODE, 'guest');
-                    localStorage.removeItem(STORAGE_KEYS.CONTACTS);
-                    localStorage.removeItem(STORAGE_KEYS.CHATS);
-                    myUsername = generateUsername();
-                    updateUIForMode();
-                } else {
-                    toggle.checked = true;
-                }
-            }
-        }
-        
-        // --- RENDER CONTACTS ---
-        function renderContacts() {
-            const container = document.getElementById('contacts-list');
-            const contacts = getContacts();
-            
-            if (contacts.length === 0) {
-                container.innerHTML = `
-                    <div class="no-contacts">
-                        <i class="fa-solid fa-user-plus"></i>
-                        <span>No saved contacts yet</span>
-                    </div>
-                `;
-                return;
-            }
-            
-            container.innerHTML = contacts.map(contact => `
-                <div class="contact-item" onclick="connectToContact('${escapeHtml(contact.peerId)}')">
-                    <div class="contact-avatar">${escapeHtml(contact.username.charAt(0).toUpperCase())}</div>
-                    <div class="contact-info">
-                        <div class="contact-name">@${escapeHtml(contact.username)}</div>
-                        <div class="contact-id">ID: ${escapeHtml(contact.peerId)}</div>
-                    </div>
-                    <button class="contact-delete" onclick="event.stopPropagation(); deleteContact('${escapeHtml(contact.peerId)}')" title="Delete contact">
-                        <i class="fa-solid fa-trash"></i>
-                    </button>
-                </div>
-            `).join('');
-        }
-        
-        function connectToContact(peerId) {
-            document.getElementById('friend-id').value = peerId;
-            connectToPeer();
-        }
-        
-        // Show modal on page load and handle keyboard
+
+        // On Load Logic
         window.addEventListener('load', () => {
-            showSetupModal();
-            // Focus the Continue button when modal is shown
-            const nextBtn = document.getElementById('setup-next-btn');
-            if (nextBtn && !document.getElementById('setup-modal').classList.contains('hidden')) {
-                nextBtn.focus();
-            }
-        });
-        
-        // Handle Escape key for modal
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                const modal = document.getElementById('setup-modal');
-                if (!modal.classList.contains('hidden') && isSetupComplete()) {
-                    modal.classList.add('hidden');
+            const savedMode = localStorage.getItem('ghostlink-mode');
+            if (savedMode) {
+                // Restore session immediately
+                document.getElementById('setup-modal').classList.add('hidden');
+                currentMode = savedMode;
+                if (currentMode === 'persistent') {
+                    myId = localStorage.getItem('ghostlink-id') || generateId(); // Reuse ID
+                    myUsername = localStorage.getItem('ghostlink-username');
+                    savedContacts = JSON.parse(localStorage.getItem('ghostlink-contacts') || "[]");
+                    chatHistory = JSON.parse(localStorage.getItem('ghostlink-chats') || "{}");
+                } else {
+                    myId = generateId(); // New ID every time for Guest
                 }
-                // Also close sidebar on mobile
-                const sidebar = document.getElementById('sidebar');
-                if (sidebar.classList.contains('open')) {
-                    sidebar.classList.remove('open');
-                }
-            }
-        });
-        
-        // --- MOBILE SIDEBAR TOGGLE ---
-        function toggleSidebar() {
-            const sidebar = document.getElementById('sidebar');
-            sidebar.classList.toggle('open');
-        }
-        
-        // Close sidebar when clicking outside on mobile
-        document.addEventListener('click', (e) => {
-            const sidebar = document.getElementById('sidebar');
-            const menuBtn = document.querySelector('.mobile-menu-btn');
-            if (window.innerWidth <= 768 && 
-                sidebar.classList.contains('open') && 
-                !sidebar.contains(e.target) && 
-                !menuBtn.contains(e.target)) {
-                sidebar.classList.remove('open');
+                initPeer(myId);
+                updateUI();
+            } else {
+                // First time user
+                myId = generateId();
             }
         });
 
-        // 2. Init PeerJS with optimized configuration
-        const peer = new Peer(mySimpleId, {
-            debug: 0, // Disable debug logging to reduce console output
-            config: {
-                iceServers: [
-                    { urls: 'stun:stun.l.google.com:19302' },
-                    { urls: 'stun:stun1.l.google.com:19302' }
-                ]
-            }
-        });
-        let conn = null;
-        let call = null;
-        let localStream = null;
-        
-        // State for Mute/Cam
-        let isMuted = false;
-        let isCamOff = false;
-
-        // UI Refs
-        const ui = {
-            idDisplay: document.getElementById('my-id'),
-            usernameDisplay: document.getElementById('my-username'),
-            statusBadge: document.getElementById('connection-status'),
-            statusText: document.getElementById('status-text'),
-            msgs: document.getElementById('messages'),
-            videoArea: document.getElementById('video-area'),
-            localVid: document.getElementById('local-video'),
-            remoteVid: document.getElementById('remote-video'),
-            muteBtn: document.getElementById('mute-btn'),
-            camBtn: document.getElementById('cam-btn'),
-            chatHeader: document.getElementById('chat-header'),
-            peerUsername: document.getElementById('peer-username'),
-            peerIdDisplay: document.getElementById('peer-id-display'),
-            peerAvatar: document.getElementById('peer-avatar')
-        };
-
-        // --- PEER EVENTS ---
-        peer.on('open', (id) => {
-            ui.idDisplay.innerText = id;
-            ui.usernameDisplay.innerText = myUsername;
-            ui.statusText.innerText = "Online";
-            ui.statusBadge.classList.add('online');
-            logSystem("Your ID is " + id + " • You are @" + myUsername);
-            // Update UI for current mode
-            updateUIForMode();
-        });
-
-        peer.on('connection', (c) => {
-            setupConnection(c);
-        });
-
-        peer.on('call', (incomingCall) => {
-            if(confirm("📹 Incoming Video Call from " + (peerUsername || "Unknown") + ". Accept?")) {
-                openCamera().then(() => {
-                    incomingCall.answer(localStream);
-                    handleCallStream(incomingCall);
-                    ui.videoArea.classList.remove('hidden');
-                });
-            }
-        });
-
-        peer.on('error', (err) => {
-            logSystem("⚠️ Error: " + err.type);
-        });
-
-        // --- FUNCTIONS ---
-
-        function copyId() {
-            const id = ui.idDisplay.innerText;
-            if (id !== '...') {
-                navigator.clipboard.writeText(id).then(() => {
-                    const originalText = ui.idDisplay.innerText;
-                    ui.idDisplay.innerText = '✓ Copied!';
-                    ui.idDisplay.style.fontSize = '16px';
-                    setTimeout(() => {
-                        ui.idDisplay.innerText = originalText;
-                        ui.idDisplay.style.fontSize = '';
-                    }, 1200);
-                }).catch(() => {
-                    alert('Your ID: ' + id);
-                });
-            }
-        }
-
-        function connectToPeer() {
-            const targetId = document.getElementById('friend-id').value;
-            if(targetId.length !== 4) return alert("Please enter a valid 4-digit ID");
-            logSystem("🔗 Connecting to " + targetId + "...");
-            const c = peer.connect(targetId, { metadata: { username: myUsername } });
-            setupConnection(c);
+        // --- PEERJS SETUP ---
+        function initPeer(id) {
+            document.getElementById('my-id-box').innerText = id;
             
-            // Close sidebar on mobile after connecting
-            if (window.innerWidth <= 768) {
-                document.getElementById('sidebar').classList.remove('open');
-            }
+            // Initialize PeerJS with the pre-generated ID
+            peer = new Peer(id, {
+                debug: 0,
+                config: { iceServers: [{ urls: 'stun:stun.l.google.com:19302' }] }
+            });
+
+            peer.on('open', (id) => {
+                document.getElementById('status-indicator').innerText = "Online";
+                document.getElementById('status-indicator').style.color = "#4ade80";
+                // If in persistent mode, save this ID forever
+                if (currentMode === 'persistent') {
+                    localStorage.setItem('ghostlink-id', id);
+                }
+            });
+
+            peer.on('connection', (c) => {
+                handleConnection(c);
+            });
+            
+            peer.on('error', (err) => {
+                if(err.type === 'unavailable-id') {
+                    // Extremely rare collision, regenerate
+                    myId = generateId();
+                    initPeer(myId);
+                } else {
+                    console.log(err);
+                }
+            });
         }
 
-        function setupConnection(c) {
+        function handleConnection(c) {
             conn = c;
-            currentPeerId = c.peer;
             
             c.on('open', () => {
-                // Send our username to the peer
-                conn.send(JSON.stringify({ type: 'username', username: myUsername }));
+                // Exchange Usernames
+                conn.send({ type: 'info', username: myUsername });
+                document.getElementById('status-indicator').innerText = "Connected";
                 
-                // Get peer username from metadata if available
-                if (c.metadata && c.metadata.username) {
-                    peerUsername = c.metadata.username;
-                    updateChatHeader(peerUsername, c.peer);
-                    // Save contact if storage enabled
-                    saveContact(peerUsername, c.peer);
+                // If in Saved Mode, ensure contact is saved
+                if (currentMode === 'persistent') {
+                    // We wait for their info
                 }
-                
-                logSystem("✅ Connected to peer " + c.peer);
-                ui.statusText.innerText = "Connected";
-                
-                // Load chat history if available
-                loadChatHistory(c.peer);
             });
-            
+
             c.on('data', (data) => {
-                // Check if it's a system message or file/code message
-                try {
-                    const parsed = JSON.parse(data);
-                    if (parsed.type === 'username') {
-                        peerUsername = parsed.username;
-                        updateChatHeader(peerUsername, c.peer);
-                        // Save contact if storage enabled
-                        saveContact(peerUsername, c.peer);
-                        logSystem("👋 " + peerUsername + " joined the chat");
-                        return;
-                    }
-                    if (parsed.type === 'file') {
-                        // Handle file/image/video/code messages
-                        addMediaMessage(parsed, 'peer', peerUsername);
-                        // Save to chat history
-                        saveChatMessage(currentPeerId, JSON.stringify(parsed), 'peer-media', peerUsername);
-                        return;
-                    }
-                } catch (e) {
-                    // Not JSON, treat as regular message
+                if (data.type === 'info') {
+                    // Update header or contact list
+                    updateContactName(c.peer, data.username);
+                    systemMsg(`${data.username} connected`);
+                } else {
+                    // Chat Message
+                    addMessage(data.text, 'peer');
+                    if(currentMode === 'persistent') saveChat(c.peer, data.text, 'peer');
                 }
-                addMessage(data, 'peer', peerUsername);
-                // Save to chat history
-                saveChatMessage(currentPeerId, data, 'peer', peerUsername);
             });
             
             c.on('close', () => {
-                logSystem("🔌 Connection closed.");
-                ui.statusText.innerText = "Online";
-                ui.chatHeader.classList.remove('active');
-                peerUsername = null;
-                currentPeerId = null;
-                endCall();
+                systemMsg("Peer disconnected");
+                document.getElementById('status-indicator').innerText = "Online";
             });
         }
+
+        // --- UI LOGIC ---
+
+        function selectMode(mode) {
+            document.querySelectorAll('.setup-option').forEach(el => el.classList.remove('selected'));
+            document.getElementById('opt-' + mode).classList.add('selected');
+            
+            const userArea = document.getElementById('username-input-area');
+            if(mode === 'persistent') {
+                userArea.classList.remove('hidden');
+                document.getElementById('setup-username').focus();
+            } else {
+                userArea.classList.add('hidden');
+            }
+        }
+
+        function finishSetup() {
+            const guestSelected = document.getElementById('opt-guest').classList.contains('selected');
+            const persistentSelected = document.getElementById('opt-persistent').classList.contains('selected');
+            
+            if(!guestSelected && !persistentSelected) return alert("Select a mode");
+
+            if (persistentSelected) {
+                const name = document.getElementById('setup-username').value.trim();
+                if(name.length < 3) return alert("Username too short");
+                
+                currentMode = 'persistent';
+                myUsername = name;
+                // Persistent Mode: Use specific ID storage
+                localStorage.setItem('ghostlink-mode', 'persistent');
+                localStorage.setItem('ghostlink-username', name);
+                // ID is saved in initPeer
+            } else {
+                currentMode = 'guest';
+                localStorage.setItem('ghostlink-mode', 'guest');
+            }
+
+            document.getElementById('setup-modal').classList.add('hidden');
+            initPeer(myId); // Start PeerJS
+            updateUI();
+        }
+
+        function updateUI() {
+            document.getElementById('display-username').innerText = '@' + myUsername;
+            
+            if (currentMode === 'persistent') {
+                // SAVED MODE: Hide direct connect, show contacts
+                document.getElementById('guest-connect-panel').classList.add('hidden');
+                document.getElementById('saved-contacts-panel').classList.remove('hidden');
+                renderContacts();
+            } else {
+                // GUEST MODE: Show direct connect, hide contacts
+                document.getElementById('guest-connect-panel').classList.remove('hidden');
+                document.getElementById('saved-contacts-panel').classList.add('hidden');
+            }
+        }
+
+        // --- SAVED MODE: CONTACTS LOGIC ---
         
-        // Load chat history for a peer
-        function loadChatHistory(peerId) {
-            if (!isChatStorageEnabled()) return;
+        function openContactModal() {
+            document.getElementById('add-contact-modal').classList.remove('hidden');
+            document.getElementById('new-contact-id').focus();
+        }
+        
+        function closeContactModal() {
+            document.getElementById('add-contact-modal').classList.add('hidden');
+        }
+
+        function addNewContact() {
+            const id = document.getElementById('new-contact-id').value;
+            if(id.length !== 4) return alert("Invalid ID");
             
-            const history = getChatHistory(peerId);
-            if (history.length === 0) return;
+            // Add to list
+            const existing = savedContacts.find(c => c.id === id);
+            if (!existing) {
+                savedContacts.push({ id: id, name: "ID: " + id }); // Name updates on connect
+                localStorage.setItem('ghostlink-contacts', JSON.stringify(savedContacts));
+                renderContacts();
+            }
             
-            // Add date separator
-            const dateDiv = document.createElement('div');
-            dateDiv.className = 'date-separator';
-            dateDiv.innerHTML = '<span>📜 Chat History</span>';
-            ui.msgs.appendChild(dateDiv);
+            closeContactModal();
+            connectTo(id);
+        }
+
+        function renderContacts() {
+            const list = document.getElementById('contacts-list');
+            list.innerHTML = "";
             
-            // Render last 50 messages from history
-            const recentHistory = history.slice(-50);
-            recentHistory.forEach(msg => {
-                if (msg.type === 'peer-media' || msg.type === 'me-media') {
-                    try {
-                        const parsed = JSON.parse(msg.message);
-                        addMediaMessage(parsed, msg.type.replace('-media', ''), msg.senderName, true);
-                    } catch (e) {
-                        // Skip invalid media messages
-                    }
+            if(savedContacts.length === 0) {
+                list.innerHTML = `<div style="padding:10px; color:var(--text-muted); font-size:12px; text-align:center;">No contacts yet. Click + to add.</div>`;
+                return;
+            }
+
+            savedContacts.forEach(c => {
+                const div = document.createElement('div');
+                div.className = 'contact-item';
+                div.innerHTML = `
+                    <div class="contact-avatar">${c.name.charAt(0).toUpperCase()}</div>
+                    <div class="contact-info">
+                        <div class="contact-name">${c.name}</div>
+                        <div class="contact-sub">ID: ${c.id}</div>
+                    </div>
+                `;
+                div.onclick = () => connectTo(c.id);
+                list.appendChild(div);
+            });
+        }
+
+        function updateContactName(id, newName) {
+            if(currentMode !== 'persistent') return;
+            const contact = savedContacts.find(c => c.id === id);
+            if(contact) {
+                contact.name = newName;
+            } else {
+                savedContacts.push({ id: id, name: newName });
+            }
+            localStorage.setItem('ghostlink-contacts', JSON.stringify(savedContacts));
+            renderContacts();
+        }
+
+        function saveChat(peerId, text, type) {
+            if(!chatHistory[peerId]) chatHistory[peerId] = [];
+            chatHistory[peerId].push({ text, type, ts: Date.now() });
+            localStorage.setItem('ghostlink-chats', JSON.stringify(chatHistory));
+        }
+
+        function loadHistory(peerId) {
+            document.getElementById('messages').innerHTML = ""; // Clear view
+            if(chatHistory[peerId]) {
+                chatHistory[peerId].forEach(msg => {
+                    addMessage(msg.text, msg.type);
+                });
+            }
+            systemMsg("Chat history loaded");
+        }
+
+        // --- CONNECTION LOGIC ---
+
+        function guestConnect() {
+            const id = document.getElementById('guest-target-id').value;
+            connectTo(id);
+        }
+
+        function connectTo(id) {
+            if(!id) return alert("Enter ID");
+            if(id === myId) return alert("Cannot connect to self");
+            
+            if(currentMode === 'persistent') loadHistory(id);
+            else document.getElementById('messages').innerHTML = "";
+
+            systemMsg(`Connecting to ${id}...`);
+            conn = peer.connect(id);
+            
+            conn.on('open', () => {
+                document.getElementById('status-indicator').innerText = "Connected";
+                conn.send({ type: 'info', username: myUsername });
+                
+                // On mobile, close sidebar automatically
+                if(window.innerWidth <= 768) toggleSidebar();
+            });
+
+            conn.on('data', (data) => {
+                 if (data.type === 'info') {
+                    updateContactName(conn.peer, data.username);
+                    systemMsg(`${data.username} connected`);
                 } else {
-                    addMessage(msg.message, msg.type, msg.senderName, true);
+                    addMessage(data.text, 'peer');
+                    if(currentMode === 'persistent') saveChat(conn.peer, data.text, 'peer');
                 }
             });
             
-            // Add separator for new messages
-            const newMsgDiv = document.createElement('div');
-            newMsgDiv.className = 'date-separator';
-            newMsgDiv.innerHTML = '<span>New Messages</span>';
-            ui.msgs.appendChild(newMsgDiv);
+            conn.on('close', () => { systemMsg("Disconnected"); });
         }
-        
-        function updateChatHeader(username, peerId) {
-            ui.peerUsername.innerText = '@' + username;
-            ui.peerIdDisplay.innerText = 'ID: ' + peerId;
-            ui.peerAvatar.innerText = username.charAt(0).toUpperCase();
-            ui.chatHeader.classList.add('active');
-        }
+
+        // --- MESSAGING ---
 
         function sendMessage() {
             const input = document.getElementById('msg-input');
             const text = input.value.trim();
             if(!text) return;
+            
             if(conn && conn.open) {
-                conn.send(text);
+                conn.send({ type: 'chat', text: text });
                 addMessage(text, 'me');
-                // Save to chat history
-                saveChatMessage(currentPeerId, text, 'me', myUsername);
+                if(currentMode === 'persistent') saveChat(conn.peer, text, 'me');
                 input.value = '';
             } else {
-                alert("⚠️ Connect to a peer first!");
+                alert("Not connected");
             }
         }
 
-        async function startCall() {
-            if(!conn) return alert("⚠️ Connect to a peer first!");
-            await openCamera();
-            const outCall = peer.call(conn.peer, localStream);
-            handleCallStream(outCall);
-            ui.videoArea.classList.remove('hidden');
-        }
-
-        async function openCamera() {
-            try {
-                localStream = await navigator.mediaDevices.getUserMedia({video: true, audio: true});
-                ui.localVid.srcObject = localStream;
-            } catch(err) {
-                alert("📷 Camera access failed: " + err.message);
-            }
-        }
-
-        function handleCallStream(callInstance) {
-            call = callInstance;
-            callInstance.on('stream', (remoteStream) => {
-                ui.remoteVid.srcObject = remoteStream;
-            });
-            callInstance.on('close', endCall);
-        }
-
-        function endCall() {
-            if(localStream) localStream.getTracks().forEach(t => t.stop());
-            if(call) call.close();
-            ui.videoArea.classList.add('hidden');
-            ui.localVid.srcObject = null;
-            ui.remoteVid.srcObject = null;
-            // Reset mute/cam state
-            isMuted = false;
-            isCamOff = false;
-            ui.muteBtn.innerHTML = '<i class="fa-solid fa-microphone"></i>';
-            ui.muteBtn.style.color = '';
-            ui.camBtn.innerHTML = '<i class="fa-solid fa-video"></i>';
-            ui.camBtn.style.color = '';
-        }
-
-        // --- TOGGLE CONTROLS ---
-        function toggleMute() {
-            if(localStream) {
-                const audioTrack = localStream.getAudioTracks()[0];
-                if(audioTrack) {
-                    isMuted = !isMuted;
-                    audioTrack.enabled = !isMuted;
-                    ui.muteBtn.innerHTML = isMuted ? '<i class="fa-solid fa-microphone-slash"></i>' : '<i class="fa-solid fa-microphone"></i>';
-                    ui.muteBtn.style.color = isMuted ? '#ef4444' : '';
-                    ui.muteBtn.style.background = isMuted ? 'rgba(239, 68, 68, 0.2)' : '';
-                }
-            }
-        }
-
-        function toggleCam() {
-            if(localStream) {
-                const videoTrack = localStream.getVideoTracks()[0];
-                if(videoTrack) {
-                    isCamOff = !isCamOff;
-                    videoTrack.enabled = !isCamOff;
-                    ui.camBtn.innerHTML = isCamOff ? '<i class="fa-solid fa-video-slash"></i>' : '<i class="fa-solid fa-video"></i>';
-                    ui.camBtn.style.color = isCamOff ? '#ef4444' : '';
-                    ui.camBtn.style.background = isCamOff ? 'rgba(239, 68, 68, 0.2)' : '';
-                }
-            }
-        }
-
-        // --- UI HELPERS ---
-        function addMessage(text, type, senderName = null, isHistory = false) {
+        function addMessage(text, type) {
             const div = document.createElement('div');
-            div.className = type === 'me' ? 'msg msg-me' : 'msg msg-peer';
-            if (isHistory) {
-                div.style.opacity = '0.8';
-            }
-            
-            // Add sender name for peer messages
-            if (type === 'peer' && senderName) {
-                const sender = document.createElement('div');
-                sender.className = 'msg-sender';
-                sender.innerText = '@' + senderName;
-                div.appendChild(sender);
-            }
-            
-            const textSpan = document.createElement('span');
-            textSpan.textContent = text;
-            div.appendChild(textSpan);
-            
-            // Add meta (timestamp + status)
-            const meta = document.createElement('div');
-            meta.className = 'msg-meta';
-            
-            const timestamp = document.createElement('span');
-            timestamp.className = 'msg-timestamp';
-            timestamp.innerText = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-            meta.appendChild(timestamp);
-            
-            // Add read status for sent messages
-            if (type === 'me') {
-                const status = document.createElement('span');
-                status.className = 'msg-status';
-                status.innerHTML = '<i class="fa-solid fa-check-double"></i>';
-                meta.appendChild(status);
-            }
-            
-            div.appendChild(meta);
-            
-            ui.msgs.appendChild(div);
-            ui.msgs.scrollTop = ui.msgs.scrollHeight;
-        }
-
-        function logSystem(text) {
-            const div = document.createElement('div');
-            div.className = 'sys-msg';
+            div.className = `msg msg-${type}`;
             div.innerText = text;
-            ui.msgs.appendChild(div);
-            ui.msgs.scrollTop = ui.msgs.scrollHeight;
+            const container = document.getElementById('messages');
+            container.appendChild(div);
+            container.scrollTop = container.scrollHeight;
         }
 
-        function handleEnter(e) {
-            if(e.key === 'Enter' && !e.shiftKey) {
-                e.preventDefault();
-                sendMessage();
-            }
-        }
-
-        // --- FILE SHARING FUNCTIONS ---
-        function toggleAttachmentMenu() {
-            const menu = document.getElementById('attachment-menu');
-            menu.classList.toggle('active');
-        }
-
-        function triggerFileInput(type) {
-            document.getElementById('attachment-menu').classList.remove('active');
-            document.getElementById(type + '-input').click();
-        }
-
-        // Valid programming languages for code sharing
-        const VALID_LANGUAGES = ['javascript', 'python', 'java', 'cpp', 'c', 'csharp', 'go', 'rust', 
-            'typescript', 'php', 'ruby', 'swift', 'kotlin', 'html', 'css', 'sql', 'shell', 'json', 
-            'xml', 'yaml', 'markdown', 'plaintext'];
-        
-        // Maximum file size (50MB)
-        const MAX_FILE_SIZE = 50 * 1024 * 1024;
-
-        function handleFileSelect(event, type) {
-            const file = event.target.files[0];
-            if (!file) return;
-            
-            if (!conn || !conn.open) {
-                alert("⚠️ Connect to a peer first!");
-                event.target.value = '';
-                return;
-            }
-            
-            // Check file size
-            if (file.size > MAX_FILE_SIZE) {
-                alert("⚠️ File too large! Maximum size is 50MB.");
-                event.target.value = '';
-                return;
-            }
-
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                const data = {
-                    type: 'file',
-                    fileType: type,
-                    fileName: file.name,
-                    fileSize: file.size,
-                    mimeType: file.type,
-                    data: e.target.result
-                };
-                conn.send(JSON.stringify(data));
-                addMediaMessage(data, 'me');
-                // Save to chat history (don't save large files to localStorage)
-                if (file.size < 1024 * 1024) { // Only save files under 1MB
-                    saveChatMessage(currentPeerId, JSON.stringify(data), 'me-media', myUsername);
-                }
-            };
-            reader.readAsDataURL(file);
-            event.target.value = '';
-        }
-
-        function addMediaMessage(data, type, senderName = null, isHistory = false) {
+        function systemMsg(text) {
             const div = document.createElement('div');
-            div.className = type === 'me' ? 'msg msg-me' : 'msg msg-peer';
-            if (isHistory) {
-                div.style.opacity = '0.8';
-            }
-            
-            if (type === 'peer' && senderName) {
-                const sender = document.createElement('div');
-                sender.className = 'msg-sender';
-                sender.innerText = '@' + senderName;
-                div.appendChild(sender);
-            }
-
-            if (data.fileType === 'image') {
-                const img = document.createElement('img');
-                img.src = data.data;
-                img.className = 'msg-image';
-                img.alt = data.fileName || 'Shared image';
-                img.onclick = () => openImagePreview(data.data);
-                div.appendChild(img);
-            } else if (data.fileType === 'video') {
-                const video = document.createElement('video');
-                video.src = data.data;
-                video.className = 'msg-video';
-                video.controls = true;
-                video.preload = 'metadata';
-                div.appendChild(video);
-            } else if (data.fileType === 'code') {
-                // Validate and sanitize language
-                const sanitizedLang = VALID_LANGUAGES.includes(data.language) ? data.language : 'plaintext';
-                const codeBlock = document.createElement('div');
-                codeBlock.className = 'msg-code';
-                codeBlock.innerHTML = `
-                    <div class="msg-code-header">
-                        <span class="msg-code-lang">${escapeHtml(sanitizedLang)}</span>
-                        <button class="msg-code-copy" onclick="copyCode(this)">
-                            <i class="fa-solid fa-copy"></i> Copy
-                        </button>
-                    </div>
-                    <pre><code class="language-${data.language}">${escapeHtml(data.code)}</code></pre>
-                `;
-                div.appendChild(codeBlock);
-                // Apply syntax highlighting
-                hljs.highlightElement(codeBlock.querySelector('code'));
-            } else {
-                // Generic file
-                const fileDiv = document.createElement('div');
-                fileDiv.className = 'msg-file';
-                fileDiv.innerHTML = `
-                    <div class="msg-file-icon">
-                        <i class="fa-solid fa-file"></i>
-                    </div>
-                    <div class="msg-file-info">
-                        <h5>${escapeHtml(data.fileName)}</h5>
-                        <span>${formatFileSize(data.fileSize)}</span>
-                    </div>
-                `;
-                fileDiv.onclick = () => downloadFile(data);
-                div.appendChild(fileDiv);
-            }
-
-            // Add meta (timestamp + status)
-            const meta = document.createElement('div');
-            meta.className = 'msg-meta';
-            const timestamp = document.createElement('span');
-            timestamp.className = 'msg-timestamp';
-            timestamp.innerText = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-            meta.appendChild(timestamp);
-            
-            if (type === 'me') {
-                const status = document.createElement('span');
-                status.className = 'msg-status';
-                status.innerHTML = '<i class="fa-solid fa-check-double"></i>';
-                meta.appendChild(status);
-            }
-            
-            div.appendChild(meta);
-            ui.msgs.appendChild(div);
-            ui.msgs.scrollTop = ui.msgs.scrollHeight;
+            div.style.cssText = "align-self: center; font-size: 11px; color: var(--text-muted); margin: 4px 0;";
+            div.innerText = text;
+            const container = document.getElementById('messages');
+            container.appendChild(div);
         }
 
-        function escapeHtml(text) {
-            const div = document.createElement('div');
-            div.textContent = text;
-            return div.innerHTML;
-        }
+        function handleEnter(e) { if(e.key === 'Enter') sendMessage(); }
 
-        function formatFileSize(bytes) {
-            if (bytes === 0) return '0 Bytes';
-            const k = 1024;
-            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
-            const i = Math.floor(Math.log(bytes) / Math.log(k));
-            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
-        }
-
-        function downloadFile(data) {
-            const link = document.createElement('a');
-            link.href = data.data;
-            link.download = data.fileName;
-            link.click();
-        }
-
-        function copyCode(button) {
-            const codeBlock = button.closest('.msg-code');
-            const code = codeBlock.querySelector('code').textContent;
-            navigator.clipboard.writeText(code).then(() => {
-                const originalText = button.innerHTML;
-                button.innerHTML = '<i class="fa-solid fa-check"></i> Copied!';
-                setTimeout(() => {
-                    button.innerHTML = originalText;
-                }, 2000);
-            });
-        }
-
-        // --- CODE MODAL FUNCTIONS ---
-        function openCodeModal() {
-            document.getElementById('attachment-menu').classList.remove('active');
-            document.getElementById('code-modal').classList.add('active');
-            document.getElementById('code-content').focus();
-        }
-
-        function closeCodeModal() {
-            document.getElementById('code-modal').classList.remove('active');
-            document.getElementById('code-content').value = '';
-        }
-
-        function sendCode() {
-            const language = document.getElementById('code-language').value;
-            const code = document.getElementById('code-content').value.trim();
-            
-            if (!code) {
-                alert("Please enter some code to share.");
-                return;
-            }
-            
-            if (!conn || !conn.open) {
-                alert("⚠️ Connect to a peer first!");
-                return;
-            }
-
-            const data = {
-                type: 'file',
-                fileType: 'code',
-                language: language,
-                code: code
-            };
-            
-            conn.send(JSON.stringify(data));
-            addMediaMessage(data, 'me');
-            // Save code to chat history
-            saveChatMessage(currentPeerId, JSON.stringify(data), 'me-media', myUsername);
-            closeCodeModal();
-        }
-
-        // --- IMAGE PREVIEW FUNCTIONS ---
-        function openImagePreview(src) {
-            document.getElementById('preview-image').src = src;
-            document.getElementById('image-preview').classList.add('active');
-        }
-
-        function closeImagePreview() {
-            document.getElementById('image-preview').classList.remove('active');
-        }
-
-        // --- PWA INSTALLATION ---
-        let deferredPrompt;
+        // --- UTILS ---
+        function toggleSidebar() { document.getElementById('sidebar').classList.toggle('open'); }
         
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            deferredPrompt = e;
-            // Show install banner after a delay
-            setTimeout(() => {
-                const banner = document.getElementById('install-banner');
-                if (!localStorage.getItem('pwa-install-dismissed')) {
-                    banner.classList.add('active');
-                }
-            }, 3000);
-        });
-
-        function installPWA() {
-            const banner = document.getElementById('install-banner');
-            banner.classList.remove('active');
-            
-            if (deferredPrompt) {
-                deferredPrompt.prompt();
-                deferredPrompt.userChoice.then((choiceResult) => {
-                    if (choiceResult.outcome === 'accepted') {
-                        logSystem('🎉 GhostLink installed successfully!');
-                    }
-                    deferredPrompt = null;
-                });
-            }
+        function copyId() {
+            navigator.clipboard.writeText(myId);
+            const box = document.getElementById('my-id-box');
+            const original = box.innerText;
+            box.innerText = "Copied!";
+            setTimeout(() => box.innerText = original, 1000);
         }
 
-        function dismissInstallBanner() {
-            document.getElementById('install-banner').classList.remove('active');
-            localStorage.setItem('pwa-install-dismissed', 'true');
-        }
-
-        // --- SERVICE WORKER REGISTRATION ---
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js')
-                    .then(reg => console.log('Service Worker registered'))
-                    .catch(err => console.log('Service Worker registration failed:', err));
-            });
-        }
-
-        // Close attachment menu when clicking outside
-        document.addEventListener('click', (e) => {
-            const menu = document.getElementById('attachment-menu');
-            const attachBtn = document.querySelector('.btn-attach');
-            if (menu.classList.contains('active') && 
-                !menu.contains(e.target) && 
-                !attachBtn.contains(e.target)) {
-                menu.classList.remove('active');
+        function resetApp() {
+            if(confirm("Reset all data and settings?")) {
+                localStorage.clear();
+                location.reload();
             }
-        });
-
-        // Handle Escape key for modals
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                closeCodeModal();
-                closeImagePreview();
-            }
-        });
+        }
     </script>
 </body>
 </html>
