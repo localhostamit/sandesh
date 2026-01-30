@@ -1333,56 +1333,392 @@
                 max-height: 90vh;
             }
         }
+        
+        /* --- SETUP MODAL STYLES --- */
+        .setup-modal {
+            background: var(--panel);
+            border-radius: 16px;
+            max-width: 480px;
+            width: 100%;
+            padding: 0;
+            box-shadow: var(--shadow-lg);
+            animation: slideUp 0.3s ease;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+        .setup-step {
+            display: none;
+        }
+        .setup-step.active {
+            display: block;
+        }
+        .setup-options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .setup-option {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            padding: 16px;
+            background: var(--panel-secondary);
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .setup-option:hover {
+            border-color: var(--primary);
+            background: var(--primary-light);
+        }
+        .setup-option.selected {
+            border-color: var(--primary);
+            background: var(--primary-light);
+        }
+        .setup-option input[type="radio"] {
+            width: 20px;
+            height: 20px;
+            accent-color: var(--primary);
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+        .setup-option-content h4 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 4px;
+            color: var(--text);
+        }
+        .setup-option-content p {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+        .setup-username-input {
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border-color);
+        }
+        .setup-username-input label {
+            display: block;
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+        .setup-username-input input {
+            width: 100%;
+            padding: 14px 16px;
+            background: var(--bg);
+            border: 1px solid var(--border-color);
+            color: var(--text);
+            font-size: 15px;
+            border-radius: 12px;
+            margin-bottom: 8px;
+        }
+        .setup-username-input input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px var(--primary-light);
+        }
+        .setup-username-hint {
+            font-size: 11px;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .setup-username-hint i {
+            color: var(--warning);
+        }
+        .setup-footer {
+            padding: 0 24px 24px;
+            display: flex;
+            gap: 12px;
+        }
+        .setup-footer button {
+            flex: 1;
+        }
+        
+        /* --- CONTACTS PANEL STYLES --- */
+        .contacts-panel {
+            margin-top: 0;
+        }
+        .contacts-list {
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 12px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-bottom: 4px;
+        }
+        .contact-item:hover {
+            background: var(--primary-light);
+        }
+        .contact-item:last-child {
+            margin-bottom: 0;
+        }
+        .contact-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: white;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+        .contact-info {
+            flex: 1;
+            min-width: 0;
+        }
+        .contact-name {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .contact-id {
+            font-size: 11px;
+            color: var(--text-secondary);
+        }
+        .contact-delete {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            opacity: 0;
+            transition: all 0.2s ease;
+        }
+        .contact-item:hover .contact-delete {
+            opacity: 1;
+        }
+        .contact-delete:hover {
+            background: var(--danger);
+            color: white;
+        }
+        .no-contacts {
+            text-align: center;
+            padding: 16px;
+            color: var(--text-secondary);
+            font-size: 13px;
+        }
+        .no-contacts i {
+            font-size: 24px;
+            margin-bottom: 8px;
+            display: block;
+            opacity: 0.5;
+        }
+        
+        /* --- SETTINGS PANEL STYLES --- */
+        .settings-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .settings-row:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        .settings-row:first-child {
+            padding-top: 0;
+        }
+        .settings-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+            color: var(--text);
+        }
+        .settings-label i {
+            color: var(--primary);
+            width: 18px;
+            text-align: center;
+        }
+        .toggle-switch {
+            position: relative;
+            width: 44px;
+            height: 24px;
+        }
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--border-color);
+            border-radius: 24px;
+            transition: 0.3s;
+        }
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+        .toggle-switch input:checked + .toggle-slider {
+            background-color: var(--primary);
+        }
+        .toggle-switch input:checked + .toggle-slider:before {
+            transform: translateX(20px);
+        }
+        .btn-clear-data {
+            margin-top: 12px;
+            padding: 10px 16px;
+            font-size: 12px;
+            background: transparent;
+            border: 1px solid var(--danger);
+            color: var(--danger);
+        }
+        .btn-clear-data:hover {
+            background: var(--danger);
+            color: white;
+        }
+        
+        /* --- CHAT HISTORY DATE SEPARATOR --- */
+        .date-separator {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 16px 0;
+        }
+        .date-separator span {
+            font-size: 11px;
+            color: var(--text-secondary);
+            background: rgba(31, 44, 52, 0.9);
+            padding: 4px 12px;
+            border-radius: 8px;
+        }
+        
+        /* --- USERNAME BADGE STYLE --- */
+        .username-badge {
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            background: var(--success);
+            color: white;
+            margin-left: 6px;
+            font-weight: 500;
+        }
+        .username-badge.guest {
+            background: var(--text-secondary);
+        }
     </style>
 </head>
 <body>
 
-    <!-- Privacy Modal (First-time notice) -->
-    <div id="privacy-modal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-        <div class="modal">
-            <div class="modal-header">
-                <i class="fa-solid fa-shield-halved"></i>
-                <h2 id="modal-title">Welcome to GhostLink</h2>
-                <p>Your privacy is our priority</p>
+    <!-- Setup Modal (First-time setup with chat storage choice) -->
+    <div id="setup-modal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="setup-title">
+        <div class="setup-modal">
+            <!-- Step 1: Privacy Info -->
+            <div id="setup-step-1" class="setup-step active">
+                <div class="modal-header">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <h2 id="setup-title">Welcome to GhostLink</h2>
+                    <p>Your privacy is our priority</p>
+                </div>
+                <div class="modal-body">
+                    <div class="privacy-item">
+                        <i class="fa-solid fa-bolt"></i>
+                        <div>
+                            <h4>Lightning Fast P2P</h4>
+                            <p>Direct peer-to-peer connection with instant ID generation. No waiting, no delays.</p>
+                        </div>
+                    </div>
+                    <div class="privacy-item">
+                        <i class="fa-solid fa-code-branch"></i>
+                        <div>
+                            <h4>100% Open Source</h4>
+                            <p>Our entire codebase is open source. You can verify our code on GitHub anytime.</p>
+                        </div>
+                    </div>
+                    <div class="privacy-item">
+                        <i class="fa-solid fa-comments"></i>
+                        <div>
+                            <h4>Peer-to-Peer Chats</h4>
+                            <p>Messages go directly from you to your peer. No servers in between, no logs, no tracking.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="setup-footer">
+                    <button onclick="goToSetupStep(2)" class="btn-connect" id="setup-next-btn">
+                        <i class="fa-solid fa-arrow-right"></i> Continue
+                    </button>
+                </div>
             </div>
-            <div class="modal-body">
-                <div class="privacy-item">
-                    <i class="fa-solid fa-database"></i>
-                    <div>
-                        <h4>No Data Storage</h4>
-                        <p>We don't store any of your data. All messages are transmitted directly between peers.</p>
+            
+            <!-- Step 2: Chat Storage Choice -->
+            <div id="setup-step-2" class="setup-step">
+                <div class="modal-header">
+                    <i class="fa-solid fa-floppy-disk"></i>
+                    <h2>Chat Storage</h2>
+                    <p>Choose how you want to use GhostLink</p>
+                </div>
+                <div class="modal-body">
+                    <div class="setup-options">
+                        <label class="setup-option" onclick="selectStorageOption('guest')">
+                            <input type="radio" name="storage-option" value="guest" checked>
+                            <div class="setup-option-content">
+                                <h4><i class="fa-solid fa-user-secret"></i> Guest Mode</h4>
+                                <p>Anonymous, no data saved. Each session is completely fresh. Perfect for one-time private chats.</p>
+                            </div>
+                        </label>
+                        <label class="setup-option" onclick="selectStorageOption('persistent')">
+                            <input type="radio" name="storage-option" value="persistent">
+                            <div class="setup-option-content">
+                                <h4><i class="fa-solid fa-bookmark"></i> Save Chats</h4>
+                                <p>Keep your chat history, contacts, and a permanent username. Reconnect with peers anytime.</p>
+                            </div>
+                        </label>
+                    </div>
+                    
+                    <div id="username-setup" class="setup-username-input hidden">
+                        <label for="setup-username">Choose your permanent username:</label>
+                        <input type="text" id="setup-username" placeholder="Enter username (3-20 characters)" maxlength="20" pattern="[a-zA-Z0-9_]+">
+                        <div class="setup-username-hint">
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                            <span>Username cannot be changed once set</span>
+                        </div>
                     </div>
                 </div>
-                <div class="privacy-item">
-                    <i class="fa-solid fa-code-branch"></i>
-                    <div>
-                        <h4>100% Open Source</h4>
-                        <p>Our entire codebase is open source. You can verify our code on GitHub anytime.</p>
-                    </div>
+                <div class="setup-footer">
+                    <button onclick="goToSetupStep(1)" class="btn-grey">
+                        <i class="fa-solid fa-arrow-left"></i> Back
+                    </button>
+                    <button onclick="completeSetup()" class="btn-connect" id="setup-complete-btn">
+                        <i class="fa-solid fa-rocket"></i> Start Chatting
+                    </button>
                 </div>
-                <div class="privacy-item">
-                    <i class="fa-solid fa-comments"></i>
-                    <div>
-                        <h4>Peer-to-Peer Chats</h4>
-                        <p>Messages go directly from you to your peer. No servers in between, no logs, no tracking.</p>
-                    </div>
-                </div>
-                <div class="privacy-item">
-                    <i class="fa-solid fa-user-secret"></i>
-                    <div>
-                        <h4>Anonymous Identity</h4>
-                        <p>Random usernames are generated for each session. Your real identity stays private.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <div class="modal-checkbox">
-                    <input type="checkbox" id="dont-show-again">
-                    <label for="dont-show-again">Don't show this again</label>
-                </div>
-                <button onclick="closePrivacyModal()" id="modal-start-btn">
-                    <i class="fa-solid fa-rocket"></i> Get Started
-                </button>
             </div>
         </div>
     </div>
@@ -1391,7 +1727,7 @@
         <div class="logo">
             <i class="fa-solid fa-ghost"></i>
             GhostLink
-            <span class="version-badge">v5.0</span>
+            <span class="version-badge">v6.0</span>
         </div>
         <div class="header-right">
             <div id="connection-status" class="status-badge">
@@ -1412,7 +1748,7 @@
             </button>
             
             <div class="panel user-info">
-                <h3><i class="fa-solid fa-user-circle"></i> Your Identity</h3>
+                <h3><i class="fa-solid fa-user-circle"></i> Your Identity <span id="user-mode-badge" class="username-badge guest">Guest</span></h3>
                 <div class="username-display">
                     <i class="fa-solid fa-at"></i>
                     <span id="my-username">Loading...</span>
@@ -1431,11 +1767,41 @@
                 </button>
             </div>
 
+            <!-- Saved Contacts Panel -->
+            <div id="contacts-panel" class="panel contacts-panel hidden">
+                <h3><i class="fa-solid fa-address-book"></i> Saved Contacts</h3>
+                <div id="contacts-list" class="contacts-list">
+                    <div class="no-contacts">
+                        <i class="fa-solid fa-user-plus"></i>
+                        <span>No saved contacts yet</span>
+                    </div>
+                </div>
+            </div>
+
             <div class="panel">
                 <h3><i class="fa-solid fa-video"></i> Video Call</h3>
                 <button class="btn-video" onclick="startCall()">
                     <i class="fa-solid fa-video"></i> Start Video Call
                 </button>
+            </div>
+            
+            <!-- Settings Panel -->
+            <div class="panel">
+                <h3><i class="fa-solid fa-cog"></i> Settings</h3>
+                <div class="settings-row">
+                    <span class="settings-label">
+                        <i class="fa-solid fa-floppy-disk"></i> Save Chats
+                    </span>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="save-chats-toggle" onchange="toggleChatStorage()">
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+                <div id="clear-data-section" class="hidden">
+                    <button class="btn-clear-data" onclick="clearAllData()">
+                        <i class="fa-solid fa-trash"></i> Clear All Data
+                    </button>
+                </div>
             </div>
         </div>
 
@@ -1603,45 +1969,328 @@
             return adj + noun;
         }
         
-        // Generate username and ID for this session
-        const myUsername = generateUsername();
-        const mySimpleId = Math.floor(Math.random() * 9000 + 1000).toString();
+        // --- FAST ID GENERATION ---
+        // Use crypto API for faster random number generation when available
+        function generateFastId() {
+            if (window.crypto && window.crypto.getRandomValues) {
+                const array = new Uint16Array(1);
+                window.crypto.getRandomValues(array);
+                return (1000 + (array[0] % 9000)).toString();
+            }
+            return Math.floor(Math.random() * 9000 + 1000).toString();
+        }
         
-        // Store peer info
-        let peerUsername = null;
+        // --- STORAGE MANAGEMENT ---
+        const STORAGE_KEYS = {
+            MODE: 'ghostlink-mode',
+            USERNAME: 'ghostlink-username',
+            PEER_ID: 'ghostlink-peer-id',
+            CONTACTS: 'ghostlink-contacts',
+            CHATS: 'ghostlink-chats',
+            SETUP_COMPLETE: 'ghostlink-setup-complete'
+        };
         
-        // --- PRIVACY MODAL ---
-        function showPrivacyModal() {
-            const dontShow = localStorage.getItem('ghostlink-privacy-accepted');
-            if (!dontShow) {
-                document.getElementById('privacy-modal').classList.remove('hidden');
+        // Check if user has completed setup
+        function isSetupComplete() {
+            return localStorage.getItem(STORAGE_KEYS.SETUP_COMPLETE) === 'true';
+        }
+        
+        // Get storage mode (guest or persistent)
+        function getStorageMode() {
+            return localStorage.getItem(STORAGE_KEYS.MODE) || 'guest';
+        }
+        
+        // Check if chat storage is enabled
+        function isChatStorageEnabled() {
+            return getStorageMode() === 'persistent';
+        }
+        
+        // Get saved username or generate new one
+        function getUsername() {
+            const savedUsername = localStorage.getItem(STORAGE_KEYS.USERNAME);
+            if (savedUsername && isChatStorageEnabled()) {
+                return savedUsername;
+            }
+            return generateUsername();
+        }
+        
+        // Get saved peer ID or generate new one
+        function getPeerId() {
+            const savedId = localStorage.getItem(STORAGE_KEYS.PEER_ID);
+            if (savedId && isChatStorageEnabled()) {
+                return savedId;
+            }
+            return generateFastId();
+        }
+        
+        // Save contact
+        function saveContact(username, peerId) {
+            if (!isChatStorageEnabled()) return;
+            const contacts = getContacts();
+            const existingIndex = contacts.findIndex(c => c.peerId === peerId);
+            if (existingIndex >= 0) {
+                contacts[existingIndex].username = username;
+                contacts[existingIndex].lastSeen = Date.now();
+            } else {
+                contacts.push({ username, peerId, lastSeen: Date.now() });
+            }
+            localStorage.setItem(STORAGE_KEYS.CONTACTS, JSON.stringify(contacts));
+            renderContacts();
+        }
+        
+        // Get all contacts
+        function getContacts() {
+            try {
+                return JSON.parse(localStorage.getItem(STORAGE_KEYS.CONTACTS)) || [];
+            } catch {
+                return [];
             }
         }
         
-        function closePrivacyModal() {
-            const dontShowAgain = document.getElementById('dont-show-again').checked;
-            if (dontShowAgain) {
-                localStorage.setItem('ghostlink-privacy-accepted', 'true');
+        // Delete contact
+        function deleteContact(peerId) {
+            const contacts = getContacts().filter(c => c.peerId !== peerId);
+            localStorage.setItem(STORAGE_KEYS.CONTACTS, JSON.stringify(contacts));
+            // Also delete chat history for this contact
+            deleteChatHistory(peerId);
+            renderContacts();
+        }
+        
+        // Save chat message
+        function saveChatMessage(peerId, message, type, senderName, timestamp) {
+            if (!isChatStorageEnabled()) return;
+            const chats = getAllChats();
+            if (!chats[peerId]) {
+                chats[peerId] = [];
             }
-            document.getElementById('privacy-modal').classList.add('hidden');
+            chats[peerId].push({
+                message,
+                type,
+                senderName,
+                timestamp: timestamp || Date.now()
+            });
+            // Keep only last 500 messages per contact
+            if (chats[peerId].length > 500) {
+                chats[peerId] = chats[peerId].slice(-500);
+            }
+            localStorage.setItem(STORAGE_KEYS.CHATS, JSON.stringify(chats));
+        }
+        
+        // Get chat history for a peer
+        function getChatHistory(peerId) {
+            const chats = getAllChats();
+            return chats[peerId] || [];
+        }
+        
+        // Get all chats
+        function getAllChats() {
+            try {
+                return JSON.parse(localStorage.getItem(STORAGE_KEYS.CHATS)) || {};
+            } catch {
+                return {};
+            }
+        }
+        
+        // Delete chat history for a peer
+        function deleteChatHistory(peerId) {
+            const chats = getAllChats();
+            delete chats[peerId];
+            localStorage.setItem(STORAGE_KEYS.CHATS, JSON.stringify(chats));
+        }
+        
+        // Clear all stored data
+        function clearAllData() {
+            if (confirm('This will delete all your saved chats, contacts, and settings. Continue?')) {
+                Object.values(STORAGE_KEYS).forEach(key => {
+                    localStorage.removeItem(key);
+                });
+                localStorage.removeItem('ghostlink-privacy-accepted');
+                localStorage.removeItem('pwa-install-dismissed');
+                location.reload();
+            }
+        }
+        
+        // --- INITIALIZE USER DATA ---
+        let myUsername = getUsername();
+        let mySimpleId = getPeerId();
+        
+        // Store peer info
+        let peerUsername = null;
+        let currentPeerId = null;
+        
+        // --- SETUP MODAL ---
+        let selectedStorageOption = 'guest';
+        
+        function showSetupModal() {
+            if (!isSetupComplete()) {
+                document.getElementById('setup-modal').classList.remove('hidden');
+            }
+            // UI update will happen in peer.on('open') after ui is initialized
+        }
+        
+        function goToSetupStep(step) {
+            document.querySelectorAll('.setup-step').forEach(s => s.classList.remove('active'));
+            document.getElementById('setup-step-' + step).classList.add('active');
+        }
+        
+        function selectStorageOption(option) {
+            selectedStorageOption = option;
+            document.querySelectorAll('.setup-option').forEach(o => o.classList.remove('selected'));
+            document.querySelector(`input[value="${option}"]`).closest('.setup-option').classList.add('selected');
+            
+            const usernameSection = document.getElementById('username-setup');
+            if (option === 'persistent') {
+                usernameSection.classList.remove('hidden');
+                document.getElementById('setup-username').focus();
+            } else {
+                usernameSection.classList.add('hidden');
+            }
+        }
+        
+        function completeSetup() {
+            if (selectedStorageOption === 'persistent') {
+                const usernameInput = document.getElementById('setup-username');
+                const username = usernameInput.value.trim();
+                
+                // Validate username
+                if (username.length < 3 || username.length > 20) {
+                    alert('Username must be between 3 and 20 characters');
+                    usernameInput.focus();
+                    return;
+                }
+                if (!/^[a-zA-Z0-9_]+$/.test(username)) {
+                    alert('Username can only contain letters, numbers, and underscores');
+                    usernameInput.focus();
+                    return;
+                }
+                
+                // Save persistent settings
+                localStorage.setItem(STORAGE_KEYS.MODE, 'persistent');
+                localStorage.setItem(STORAGE_KEYS.USERNAME, username);
+                localStorage.setItem(STORAGE_KEYS.PEER_ID, mySimpleId);
+                myUsername = username;
+            } else {
+                localStorage.setItem(STORAGE_KEYS.MODE, 'guest');
+            }
+            
+            localStorage.setItem(STORAGE_KEYS.SETUP_COMPLETE, 'true');
+            document.getElementById('setup-modal').classList.add('hidden');
+            updateUIForMode();
+        }
+        
+        function updateUIForMode() {
+            const isPersistent = isChatStorageEnabled();
+            const modeBadge = document.getElementById('user-mode-badge');
+            const contactsPanel = document.getElementById('contacts-panel');
+            const clearDataSection = document.getElementById('clear-data-section');
+            const saveChatsToggle = document.getElementById('save-chats-toggle');
+            
+            if (isPersistent) {
+                modeBadge.textContent = 'Saved';
+                modeBadge.classList.remove('guest');
+                contactsPanel.classList.remove('hidden');
+                clearDataSection.classList.remove('hidden');
+                saveChatsToggle.checked = true;
+                renderContacts();
+            } else {
+                modeBadge.textContent = 'Guest';
+                modeBadge.classList.add('guest');
+                contactsPanel.classList.add('hidden');
+                clearDataSection.classList.add('hidden');
+                saveChatsToggle.checked = false;
+            }
+            
+            // Update username display if ui is initialized
+            if (typeof ui !== 'undefined' && ui.usernameDisplay) {
+                ui.usernameDisplay.innerText = myUsername;
+            } else {
+                const usernameEl = document.getElementById('my-username');
+                if (usernameEl) usernameEl.innerText = myUsername;
+            }
+        }
+        
+        function toggleChatStorage() {
+            const toggle = document.getElementById('save-chats-toggle');
+            if (toggle.checked) {
+                // Enable chat storage - need username
+                const username = prompt('Enter a permanent username (3-20 characters, letters/numbers/underscores only):');
+                if (username && username.length >= 3 && username.length <= 20 && /^[a-zA-Z0-9_]+$/.test(username)) {
+                    localStorage.setItem(STORAGE_KEYS.MODE, 'persistent');
+                    localStorage.setItem(STORAGE_KEYS.USERNAME, username);
+                    localStorage.setItem(STORAGE_KEYS.PEER_ID, mySimpleId);
+                    localStorage.setItem(STORAGE_KEYS.SETUP_COMPLETE, 'true');
+                    myUsername = username;
+                    updateUIForMode();
+                } else {
+                    toggle.checked = false;
+                    if (username !== null) {
+                        alert('Invalid username. Must be 3-20 characters with letters, numbers, and underscores only.');
+                    }
+                }
+            } else {
+                // Disable chat storage
+                if (confirm('This will disable chat storage. Your saved chats and contacts will be deleted. Continue?')) {
+                    localStorage.setItem(STORAGE_KEYS.MODE, 'guest');
+                    localStorage.removeItem(STORAGE_KEYS.CONTACTS);
+                    localStorage.removeItem(STORAGE_KEYS.CHATS);
+                    myUsername = generateUsername();
+                    updateUIForMode();
+                } else {
+                    toggle.checked = true;
+                }
+            }
+        }
+        
+        // --- RENDER CONTACTS ---
+        function renderContacts() {
+            const container = document.getElementById('contacts-list');
+            const contacts = getContacts();
+            
+            if (contacts.length === 0) {
+                container.innerHTML = `
+                    <div class="no-contacts">
+                        <i class="fa-solid fa-user-plus"></i>
+                        <span>No saved contacts yet</span>
+                    </div>
+                `;
+                return;
+            }
+            
+            container.innerHTML = contacts.map(contact => `
+                <div class="contact-item" onclick="connectToContact('${escapeHtml(contact.peerId)}')">
+                    <div class="contact-avatar">${escapeHtml(contact.username.charAt(0).toUpperCase())}</div>
+                    <div class="contact-info">
+                        <div class="contact-name">@${escapeHtml(contact.username)}</div>
+                        <div class="contact-id">ID: ${escapeHtml(contact.peerId)}</div>
+                    </div>
+                    <button class="contact-delete" onclick="event.stopPropagation(); deleteContact('${escapeHtml(contact.peerId)}')" title="Delete contact">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+                </div>
+            `).join('');
+        }
+        
+        function connectToContact(peerId) {
+            document.getElementById('friend-id').value = peerId;
+            connectToPeer();
         }
         
         // Show modal on page load and handle keyboard
         window.addEventListener('load', () => {
-            showPrivacyModal();
-            // Focus the Get Started button when modal is shown
-            const startBtn = document.getElementById('modal-start-btn');
-            if (startBtn && !document.getElementById('privacy-modal').classList.contains('hidden')) {
-                startBtn.focus();
+            showSetupModal();
+            // Focus the Continue button when modal is shown
+            const nextBtn = document.getElementById('setup-next-btn');
+            if (nextBtn && !document.getElementById('setup-modal').classList.contains('hidden')) {
+                nextBtn.focus();
             }
         });
         
         // Handle Escape key for modal
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
-                const modal = document.getElementById('privacy-modal');
-                if (!modal.classList.contains('hidden')) {
-                    closePrivacyModal();
+                const modal = document.getElementById('setup-modal');
+                if (!modal.classList.contains('hidden') && isSetupComplete()) {
+                    modal.classList.add('hidden');
                 }
                 // Also close sidebar on mobile
                 const sidebar = document.getElementById('sidebar');
@@ -1704,6 +2353,8 @@
             ui.statusText.innerText = "Online";
             ui.statusBadge.classList.add('online');
             logSystem("Your ID is " + id + " • You are @" + myUsername);
+            // Update UI for current mode
+            updateUIForMode();
         });
 
         peer.on('connection', (c) => {
@@ -1758,6 +2409,7 @@
 
         function setupConnection(c) {
             conn = c;
+            currentPeerId = c.peer;
             
             c.on('open', () => {
                 // Send our username to the peer
@@ -1767,10 +2419,15 @@
                 if (c.metadata && c.metadata.username) {
                     peerUsername = c.metadata.username;
                     updateChatHeader(peerUsername, c.peer);
+                    // Save contact if storage enabled
+                    saveContact(peerUsername, c.peer);
                 }
                 
                 logSystem("✅ Connected to peer " + c.peer);
                 ui.statusText.innerText = "Connected";
+                
+                // Load chat history if available
+                loadChatHistory(c.peer);
             });
             
             c.on('data', (data) => {
@@ -1780,18 +2437,24 @@
                     if (parsed.type === 'username') {
                         peerUsername = parsed.username;
                         updateChatHeader(peerUsername, c.peer);
+                        // Save contact if storage enabled
+                        saveContact(peerUsername, c.peer);
                         logSystem("👋 " + peerUsername + " joined the chat");
                         return;
                     }
                     if (parsed.type === 'file') {
                         // Handle file/image/video/code messages
                         addMediaMessage(parsed, 'peer', peerUsername);
+                        // Save to chat history
+                        saveChatMessage(currentPeerId, JSON.stringify(parsed), 'peer-media', peerUsername);
                         return;
                     }
                 } catch (e) {
                     // Not JSON, treat as regular message
                 }
                 addMessage(data, 'peer', peerUsername);
+                // Save to chat history
+                saveChatMessage(currentPeerId, data, 'peer', peerUsername);
             });
             
             c.on('close', () => {
@@ -1799,8 +2462,44 @@
                 ui.statusText.innerText = "Online";
                 ui.chatHeader.classList.remove('active');
                 peerUsername = null;
+                currentPeerId = null;
                 endCall();
             });
+        }
+        
+        // Load chat history for a peer
+        function loadChatHistory(peerId) {
+            if (!isChatStorageEnabled()) return;
+            
+            const history = getChatHistory(peerId);
+            if (history.length === 0) return;
+            
+            // Add date separator
+            const dateDiv = document.createElement('div');
+            dateDiv.className = 'date-separator';
+            dateDiv.innerHTML = '<span>📜 Chat History</span>';
+            ui.msgs.appendChild(dateDiv);
+            
+            // Render last 50 messages from history
+            const recentHistory = history.slice(-50);
+            recentHistory.forEach(msg => {
+                if (msg.type === 'peer-media' || msg.type === 'me-media') {
+                    try {
+                        const parsed = JSON.parse(msg.message);
+                        addMediaMessage(parsed, msg.type.replace('-media', ''), msg.senderName, true);
+                    } catch (e) {
+                        // Skip invalid media messages
+                    }
+                } else {
+                    addMessage(msg.message, msg.type, msg.senderName, true);
+                }
+            });
+            
+            // Add separator for new messages
+            const newMsgDiv = document.createElement('div');
+            newMsgDiv.className = 'date-separator';
+            newMsgDiv.innerHTML = '<span>New Messages</span>';
+            ui.msgs.appendChild(newMsgDiv);
         }
         
         function updateChatHeader(username, peerId) {
@@ -1817,6 +2516,8 @@
             if(conn && conn.open) {
                 conn.send(text);
                 addMessage(text, 'me');
+                // Save to chat history
+                saveChatMessage(currentPeerId, text, 'me', myUsername);
                 input.value = '';
             } else {
                 alert("⚠️ Connect to a peer first!");
@@ -1891,9 +2592,12 @@
         }
 
         // --- UI HELPERS ---
-        function addMessage(text, type, senderName = null) {
+        function addMessage(text, type, senderName = null, isHistory = false) {
             const div = document.createElement('div');
             div.className = type === 'me' ? 'msg msg-me' : 'msg msg-peer';
+            if (isHistory) {
+                div.style.opacity = '0.8';
+            }
             
             // Add sender name for peer messages
             if (type === 'peer' && senderName) {
@@ -1993,14 +2697,21 @@
                 };
                 conn.send(JSON.stringify(data));
                 addMediaMessage(data, 'me');
+                // Save to chat history (don't save large files to localStorage)
+                if (file.size < 1024 * 1024) { // Only save files under 1MB
+                    saveChatMessage(currentPeerId, JSON.stringify(data), 'me-media', myUsername);
+                }
             };
             reader.readAsDataURL(file);
             event.target.value = '';
         }
 
-        function addMediaMessage(data, type, senderName = null) {
+        function addMediaMessage(data, type, senderName = null, isHistory = false) {
             const div = document.createElement('div');
             div.className = type === 'me' ? 'msg msg-me' : 'msg msg-peer';
+            if (isHistory) {
+                div.style.opacity = '0.8';
+            }
             
             if (type === 'peer' && senderName) {
                 const sender = document.createElement('div');
@@ -2145,6 +2856,8 @@
             
             conn.send(JSON.stringify(data));
             addMediaMessage(data, 'me');
+            // Save code to chat history
+            saveChatMessage(currentPeerId, JSON.stringify(data), 'me-media', myUsername);
             closeCodeModal();
         }
 
